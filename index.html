@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crafty Fox Publishing - Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team. Showcasing quality books from talented authors.">
+    <meta name="keywords" content="publishing, books, authors, ghost writing, editing, book marketing, ARC review, Crafty Fox Publishing">
+    <meta name="author" content="Crafty Fox Publishing">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://craftyfox-publishing.netlify.app/">
+    <meta property="og:title" content="Crafty Fox Publishing - Professional Publishing Services">
+    <meta property="og:description" content="Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team.">
+    <meta property="og:image" content="./src/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://craftyfox-publishing.netlify.app/">
+    <meta property="twitter:title" content="Crafty Fox Publishing - Professional Publishing Services">
+    <meta property="twitter:description" content="Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team.">
+    <meta property="twitter:image" content="./src/images/og-image.jpg">
+
+    <title>Crafty Fox Publishing - Professional Publishing Services</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./src/images/favicon.ico">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://formspree.io">
+</head>
+<body>
+    <!-- Skip navigation for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="./src/images/crafty-fox-logo.svg" alt="Crafty Fox Publishing" class="logo-image">
+                    <span class="logo-text">Crafty Fox Publishing</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation menu -->
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#books" role="menuitem">Books</a></li>
+                    <li role="none"><a href="#services" role="menuitem">Services</a></li>
+                    <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="#newsletter" role="menuitem">Newsletter</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section" aria-labelledby="hero-heading">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 id="hero-heading" class="hero-title">Bringing Stories to Life</h1>
+                    <p class="hero-subtitle">Professional publishing services for authors and dreamers. From ghost writing to marketing, we help you share your story with the world.</p>
+                    <div class="hero-actions">
+                        <a href="#services" class="cta-button primary">Explore Our Services</a>
+                        <a href="#books" class="cta-button secondary">View Published Works</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="./src/images/hero-books.jpg" alt="Collection of published books showcasing our work" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Books Showcase Section -->
+        <section id="books" class="books-section" aria-labelledby="books-heading">
+            <div class="section-container">
+                <header class="section-header">
+                    <h2 id="books-heading" class="section-title">Featured Publications</h2>
+                    <p class="section-description">Discover the incredible works from our talented authors</p>
+                </header>
+                
+                <div class="books-grid" role="region" aria-label="Published books gallery">
+                    <!-- Book items will be dynamically loaded or added here -->
+                    <article class="book-card">
+                        <div class="book-cover">
+                            <img src="./src/images/book-placeholder.jpg" alt="Book cover" loading="lazy">
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Sample Book Title</h3>
+                            <p class="book-author">by Author Name</p>
+                            <p class="book-description">Brief description of the book...</p>
+                            <div class="book-links">
+                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View on Amazon">Amazon</a>
+                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View on Goodreads">Goodreads</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- More book cards will be added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section" aria-labelledby="services-heading">
+            <div class="section-container">
+                <header class="section-header">
+                    <h2 id="services-heading" class="section-title">Our Publishing Services</h2>
+                    <p class="section-description">Comprehensive support for your publishing journey</p>
+                </header>
+                
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="./src/images/icon-ghostwriting.svg" alt="" role="presentation">
+                        </div>
+                        <h3 class="service-title">Ghost Writing</h3>
+                        <p class="service-description">Professional writers bring your ideas to life with compelling, authentic storytelling.</p>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                    </article>
+                    
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="./src/images/icon-editing.svg" alt="" role="presentation">
+                        </div>
+                        <h3 class="service-title">Editing</h3>
+                        <p class="service-description">Comprehensive editing services from developmental to copy editing and proofreading.</p>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                    </article>
+                    
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="./src/images/icon-publishing.svg" alt="" role="presentation">
+                        </div>
+                        <h3 class="service-title">Publishing</h3>
+                        <p class="service-description">End-to-end publishing support from manuscript to market-ready book.</p>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                    </article>
+                    
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="./src/images/icon-marketing.svg" alt="" role="presentation">
+                        </div>
+                        <h3 class="service-title">Marketing</h3>
+                        <p class="service-description">Strategic marketing campaigns to help your book reach its intended audience.</p>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                    </article>
+                    
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="./src/images/icon-arc-review.svg" alt="" role="presentation">
+                        </div>
+                        <h3 class="service-title">ARC Review Team</h3>
+                        <p class="service-description">Professional advance review copies program to generate early buzz and feedback.</p>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <div class="section-container">
+                <header class="section-header">
+                    <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+                    <p class="section-description">Ready to start your publishing journey? We'd love to hear from you.</p>
+                </header>
+                
+                <div class="contact-container">
+                    <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">Full Name *</label>
+                            <input type="text" id="contact-name" name="name" class="form-input" required aria-describedby="name-error">
+                            <span id="name-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" class="form-input" required aria-describedby="email-error">
+                            <span id="email-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-subject" class="form-label">Subject</label>
+                            <select id="contact-subject" name="subject" class="form-select">
+                                <option value="">Select a service...</option>
+                                <option value="ghost-writing">Ghost Writing</option>
+                                <option value="editing">Editing</option>
+                                <option value="publishing">Publishing</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="arc-review">ARC Review Team</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">Message *</label>
+                            <textarea id="contact-message" name="message" class="form-textarea" rows="5" required aria-describedby="message-error" placeholder="Tell us about your project..."></textarea>
+                            <span id="message-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Send Message</button>
+                        
+                        <div class="form-status" role="status" aria-live="polite"></div>
+                    </form>
+                    
+                    <div class="contact-info">
+                        <h3>Connect With Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                                <img src="./src/images/icon-facebook.svg" alt="Facebook">
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link amazon" target="_blank" rel="noopener noreferrer" aria-label="Find us on Amazon">
+                                <img src="./src/images/icon-amazon.svg" alt="Amazon">
+                                <span>Amazon</span>
+                            </a>
+                            <a href="#" class="social-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Goodreads">
+                                <img src="./src/images/icon-goodreads.svg" alt="Goodreads">
+                                <span>Goodreads</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter-section" aria-labelledby="newsletter-heading">
+            <div class="section-container">
+                <div class="newsletter-content">
+                    <h2 id="newsletter-heading" class="section-title">Stay Updated</h2>
+                    <p class="section-description">Get the latest news about our publications, author spotlights, and publishing tips delivered to your inbox.</p>
+                    
+                    <form class="newsletter-form" action="https://formspree.io/f/your-newsletter-id" method="POST" novalidate>
+                        <div class="newsletter-input-group">
+                            <label for="newsletter-email" class="visually-hidden">Email address for newsletter</label>
+                            <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Enter your email address" required aria-describedby="newsletter-error">
+                            <button type="submit" class="newsletter-submit">Subscribe</button>
+                        </div>
+                        <span id="newsletter-error" class="form-error" role="alert"></span>
+                        <div class="newsletter-status" role="status" aria-live="polite"></div>
+                        <p class="newsletter-privacy">
+                            <small>We respect your privacy. Unsubscribe at any time. <a href="#privacy">Privacy Policy</a></small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Crafty Fox Publishing</h3>
+                    <p>Bringing stories to life through professional publishing services.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Ghost Writing</a></li>
+                        <li><a href="#services">Editing</a></li>
+                        <li><a href="#services">Publishing</a></li>
+                        <li><a href="#services">Marketing</a></li>
+                        <li><a href="#services">ARC Review Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="footer-social">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Amazon</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Goodreads</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Ready to publish your story?</p>
+                    <a href="#contact" class="footer-cta">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Crafty Fox Publishing. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./src/js/main.js"></script>
+</body>
+</html>

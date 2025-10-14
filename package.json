@@ -1,0 +1,29 @@
+{
+  "name": "crafty-fox-web",
+  "version": "1.0.0",
+  "description": "Modern, responsive landing page for Crafty Fox Publishing",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=8080",
+    "build": "echo Static site - no build required",
+    "lint": "npx htmlhint index.html",
+    "test": "echo Tests will be added later"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marc-Reynolds/CraftyFoxWeb.git"
+  },
+  "keywords": ["publishing", "books", "authors", "landing-page", "responsive"],
+  "author": "Crafty Fox Publishing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marc-Reynolds/CraftyFoxWeb/issues"
+  },
+  "homepage": "https://github.com/Marc-Reynolds/CraftyFoxWeb#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.10.0",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}
