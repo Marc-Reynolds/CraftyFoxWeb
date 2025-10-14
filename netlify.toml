@@ -66,16 +66,6 @@
   # Enable Netlify form detection
   spam_action = "block"
 
-# Plugin configuration (optional for future enhancements)
-[[plugins]]
-  package = "netlify-plugin-lighthouse"
-  
-  [plugins.inputs.audits]
-    output_path = "reports/lighthouse.html"
-    
-[[plugins]]
-  package = "netlify-plugin-html-validate"
-
 # Branch-specific settings
 [context.production]
   publish = "."

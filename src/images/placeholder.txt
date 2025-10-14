@@ -1,0 +1,10 @@
+# Image Placeholders
+
+This directory will contain:
+- crafty-fox-logo.svg (company logo)
+- hero-books.jpg (hero section image)
+- book-placeholder.jpg (book cover placeholder)
+- icon-*.svg (service icons)
+- social media icons
+
+For development, images can be replaced with actual assets later.
