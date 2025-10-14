@@ -31,7 +31,28 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### Specification-First Compliance
+- [ ] Feature specification (spec.md) exists and is complete
+- [ ] Specification is business-focused (no implementation details)
+- [ ] All requirements are testable with clear acceptance criteria
+- [ ] Success criteria are measurable and technology-agnostic
+
+### User Story Independence Compliance  
+- [ ] User stories are prioritized (P1, P2, P3...)
+- [ ] Each story is independently implementable and testable
+- [ ] P1 story represents viable MVP
+- [ ] Stories can be delivered incrementally
+
+### Clarity Requirements
+- [ ] No unresolved [NEEDS CLARIFICATION] markers remain
+- [ ] Vague adjectives replaced with quantified criteria
+- [ ] All ambiguities resolved through clarification workflow
+- [ ] Requirements quality validated via checklist
+
+### Template Consistency
+- [ ] All sections follow established template structure
+- [ ] Required sections completed, optional sections removed if unused
+- [ ] Naming conventions and ID schemes followed consistently
 
 ## Project Structure
 
