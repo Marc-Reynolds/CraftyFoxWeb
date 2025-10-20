@@ -160,40 +160,174 @@ function initBookModals() {
     }
 }
 
-// Service Card Expansion
+// Service Card Expansion as Modals
 function initServiceExpansion() {
     const expandButtons = document.querySelectorAll('.service-expand-btn');
+    const modal = document.getElementById('book-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeButton = document.querySelector('.modal-close');
     
+    if (!modal || !modalBody) return;
+    
+    // Service details data extracted from HTML
+    const serviceData = {
+        'ghost-writing': {
+            title: 'Ghost Writing',
+            icon: '✍️',
+            description: 'Professional writers bring your ideas to life with compelling, authentic storytelling.',
+            details: {
+                'What\'s Included': [
+                    'Complete manuscript development from concept to final draft',
+                    'Professional writer matched to your genre and style',
+                    'Multiple revision rounds included',
+                    'Confidentiality agreement and full rights transfer',
+                    'Average completion: 3-6 months depending on length'
+                ],
+                'Perfect For': 'Busy professionals, thought leaders, and entrepreneurs with stories to share but limited time to write.'
+            },
+            ctaText: 'Get a Quote',
+            ctaLink: '#contact'
+        },
+        'editing': {
+            title: 'Editing',
+            icon: '✂️',
+            description: 'Comprehensive editing services from developmental to copy editing and proofreading.',
+            details: {
+                'Editing Levels': [
+                    '<strong>Developmental Editing:</strong> Big-picture structure, plot, character development',
+                    '<strong>Line Editing:</strong> Style, flow, sentence structure improvements',
+                    '<strong>Copy Editing:</strong> Grammar, spelling, punctuation, consistency',
+                    '<strong>Proofreading:</strong> Final polish before publication'
+                ],
+                'Turnaround': '2-4 weeks depending on manuscript length and editing level.'
+            },
+            ctaText: 'Get a Quote',
+            ctaLink: '#contact'
+        },
+        'publishing': {
+            title: 'Publishing',
+            icon: '📚',
+            description: 'End-to-end publishing support from manuscript to market-ready book.',
+            details: {
+                'Full Publishing Package': [
+                    'Professional cover design',
+                    'Interior formatting for print and ebook',
+                    'ISBN assignment and registration',
+                    'Amazon KDP and IngramSpark setup',
+                    'Distribution to major online retailers',
+                    'Copyright registration assistance'
+                ],
+                'Timeline': '4-8 weeks from final manuscript to published book.'
+            },
+            ctaText: 'Get Started',
+            ctaLink: '#contact'
+        },
+        'marketing': {
+            title: 'Marketing',
+            icon: '📊',
+            description: 'Strategic marketing campaigns to help your book reach its intended audience.',
+            details: {
+                'Marketing Services': [
+                    'Social media campaign strategy and management',
+                    'Amazon ads and promotional campaigns',
+                    'Email marketing and newsletter setup',
+                    'Book launch planning and execution',
+                    'Goodreads author profile optimization',
+                    'Press release writing and distribution'
+                ],
+                'Packages': 'Available as one-time launch campaigns or ongoing monthly management.'
+            },
+            ctaText: 'Discuss Your Campaign',
+            ctaLink: '#contact'
+        },
+        'arc-review': {
+            title: 'ARC Review Team',
+            icon: '⭐',
+            description: 'Professional advance review copies program to generate early buzz and feedback.',
+            details: {
+                'Our ARC Program Includes': [
+                    'Access to 200+ active book reviewers across genres',
+                    'Targeted reviewer matching based on your book\'s genre',
+                    'Digital and/or print ARC distribution',
+                    'Review tracking and collection',
+                    'Amazon, Goodreads, and BookBub review posting',
+                    'Minimum 15-25 reviews guaranteed'
+                ],
+                'Timeline': 'Launch 4-6 weeks before publication date for maximum impact.'
+            },
+            ctaText: 'Join Our ARC Program',
+            ctaLink: '#contact'
+        },
+        'landing-page': {
+            title: 'Landing Page Development',
+            icon: '🌐',
+            description: 'Custom-designed landing pages to showcase your books and author brand with professional web presence.',
+            details: {
+                'Landing Page Features': [
+                    'Custom design tailored to your brand and books',
+                    'Responsive mobile-friendly layout',
+                    'Book showcase gallery with purchase links',
+                    'Contact form and newsletter integration',
+                    'Social media integration',
+                    'Fast loading, SEO-optimized',
+                    'Hosted on Netlify with free SSL'
+                ],
+                'Delivery': '2-3 weeks from design approval to live site.'
+            },
+            ctaText: 'Request a Demo',
+            ctaLink: '#contact'
+        }
+    };
+    
+    // Open modal when service expand button clicked
     expandButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             const serviceId = this.getAttribute('data-service');
-            const detailsElement = document.getElementById(serviceId + '-details');
+            const service = serviceData[serviceId];
             
-            if (detailsElement) {
-                const isExpanded = detailsElement.classList.contains('expanded');
-                
-                // Close all other expanded sections
-                document.querySelectorAll('.service-details.expanded').forEach(function(el) {
-                    if (el !== detailsElement) {
-                        el.classList.remove('expanded');
-                        const btn = document.querySelector('[data-service="' + el.id.replace('-details', '') + '"]');
-                        if (btn) btn.textContent = 'Learn More';
-                    }
-                });
-                
-                // Toggle current section
-                detailsElement.classList.toggle('expanded');
-                this.textContent = isExpanded ? 'Learn More' : 'Show Less';
-                
-                // Smooth scroll to button if expanding
-                if (!isExpanded) {
-                    setTimeout(function() {
-                        button.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 300);
-                }
+            if (service) {
+                displayServiceModal(service);
             }
         });
     });
+    
+    function displayServiceModal(service) {
+        let detailsHTML = '';
+        
+        // Build details sections
+        for (let key in service.details) {
+            const value = service.details[key];
+            detailsHTML += '<h3>' + key + ':</h3>';
+            
+            if (Array.isArray(value)) {
+                detailsHTML += '<ul>';
+                value.forEach(function(item) {
+                    detailsHTML += '<li>' + item + '</li>';
+                });
+                detailsHTML += '</ul>';
+            } else {
+                detailsHTML += '<p>' + value + '</p>';
+            }
+        }
+        
+        modalBody.innerHTML = `
+            <div class="modal-service-icon">${service.icon}</div>
+            <h2 id="modal-title">${service.title}</h2>
+            <p class="modal-service-description">${service.description}</p>
+            ${detailsHTML}
+            <div class="modal-links">
+                <a href="${service.ctaLink}" class="modal-link">${service.ctaText}</a>
+            </div>
+        `;
+        
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus management
+        setTimeout(function() {
+            closeButton.focus();
+        }, 100);
+    }
 }
 
 // Initialize on DOM ready

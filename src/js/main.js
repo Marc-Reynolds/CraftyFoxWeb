@@ -19,8 +19,6 @@
         initSmoothScrolling();
         initFormHandling();
         initAccessibility();
-        initBookModals();
-        initServiceExpansion();
         
         // Mark site as JS-enabled for progressive enhancement
         document.documentElement.classList.add('js-enabled');
