@@ -35,7 +35,7 @@ function initBookModals() {
         'lost-keys': {
             title: 'The Lost Keys: Unlocking the Art of Problem-Solving',
             author: 'Marc Reynolds',
-            cover: './src/images/The_Lost_Keys.png',
+            cover: './src/images/The_Lost_Keys.jpg',
             description: 'How to Approach Problems, Break Them Down, and Find Solutions.',
             fullDescription: 'A mystery that unlocks secrets hidden in plain sight. Learn systematic approaches to problem-solving that can be applied to any challenge in life or work.',
             features: [
@@ -51,7 +51,7 @@ function initBookModals() {
         'work-smarter': {
             title: 'How to Work Smarter, Not Harder: Work-Life Balance Without Losing Momentum',
             author: 'Marc Reynolds',
-            cover: './src/images/How_To_Work_Smarter.png',
+            cover: './src/images/How_To_Work_Smarter.jpg',
             description: 'Practical strategies and productivity techniques to maximize efficiency and achieve more in less time.',
             fullDescription: 'Discover the secrets to working smarter, not harder. This book provides actionable strategies for maximizing your productivity while maintaining a healthy work-life balance.',
             features: [
@@ -67,7 +67,7 @@ function initBookModals() {
         'reboot-career': {
             title: 'Reboot Your Career for the AI Generation',
             author: 'Marc Reynolds',
-            cover: './src/images/Reboot_Your_Career_for_the_AI_Generation.png',
+            cover: './src/images/Reboot_Your_Career_for_the_AI_Generation.jpg',
             description: 'Navigate the future of work with AI. Essential strategies for thriving in an AI-powered professional landscape.',
             fullDescription: 'The workplace is rapidly evolving with AI technology. This book provides a roadmap for adapting your skills, positioning yourself for success, and thriving in an AI-enhanced professional world.',
             features: [
