@@ -43,6 +43,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v24.0"></script>
+    
     <!-- Skip navigation for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
@@ -116,6 +120,7 @@
                                 <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View How to have a Lucid Dream on Amazon">Amazon</a>
                                 <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View How to have a Lucid Dream on Goodreads">Goodreads</a>
                             </div>
+                            <button class="book-details-btn" data-book="lucid-dream">View Full Details</button>
                         </div>
                     </article>
                     
@@ -131,6 +136,7 @@
                                 <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View The Lost Keys on Amazon">Amazon</a>
                                 <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View The Lost Keys on Goodreads">Goodreads</a>
                             </div>
+                            <button class="book-details-btn" data-book="lost-keys">View Full Details</button>
                         </div>
                     </article>
                     
@@ -146,6 +152,7 @@
                                 <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View How To Work Smarter on Amazon">Amazon</a>
                                 <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View How To Work Smarter on Goodreads">Goodreads</a>
                             </div>
+                            <button class="book-details-btn" data-book="work-smarter">View Full Details</button>
                         </div>
                     </article>
                     
@@ -161,6 +168,7 @@
                                 <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View Reboot Your Career on Amazon">Amazon</a>
                                 <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View Reboot Your Career on Goodreads">Goodreads</a>
                             </div>
+                            <button class="book-details-btn" data-book="reboot-career">View Full Details</button>
                         </div>
                     </article>
                     
@@ -176,6 +184,7 @@
                                 <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View Dream Journal on Amazon">Amazon</a>
                                 <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View Dream Journal on Goodreads">Goodreads</a>
                             </div>
+                            <button class="book-details-btn" data-book="dream-journal">View Full Details</button>
                         </div>
                     </article>
                 </div>
@@ -197,7 +206,19 @@
                         </div>
                         <h3 class="service-title">Ghost Writing</h3>
                         <p class="service-description">Professional writers bring your ideas to life with compelling, authentic storytelling.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="ghost-writing">Learn More</button>
+                        <div class="service-details" id="ghost-writing-details">
+                            <p><strong>What's Included:</strong></p>
+                            <ul>
+                                <li>Complete manuscript development from concept to final draft</li>
+                                <li>Professional writer matched to your genre and style</li>
+                                <li>Multiple revision rounds included</li>
+                                <li>Confidentiality agreement and full rights transfer</li>
+                                <li>Average completion: 3-6 months depending on length</li>
+                            </ul>
+                            <p><strong>Perfect For:</strong> Busy professionals, thought leaders, and entrepreneurs with stories to share but limited time to write.</p>
+                            <a href="#contact" class="service-contact-btn">Get a Quote</a>
+                        </div>
                     </article>
                     
                     <article class="service-card">
@@ -206,7 +227,18 @@
                         </div>
                         <h3 class="service-title">Editing</h3>
                         <p class="service-description">Comprehensive editing services from developmental to copy editing and proofreading.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="editing">Learn More</button>
+                        <div class="service-details" id="editing-details">
+                            <p><strong>Editing Levels:</strong></p>
+                            <ul>
+                                <li><strong>Developmental Editing:</strong> Big-picture structure, plot, character development</li>
+                                <li><strong>Line Editing:</strong> Style, flow, sentence structure improvements</li>
+                                <li><strong>Copy Editing:</strong> Grammar, spelling, punctuation, consistency</li>
+                                <li><strong>Proofreading:</strong> Final polish before publication</li>
+                            </ul>
+                            <p><strong>Turnaround:</strong> 2-4 weeks depending on manuscript length and editing level.</p>
+                            <a href="#contact" class="service-contact-btn">Get a Quote</a>
+                        </div>
                     </article>
                     
                     <article class="service-card">
@@ -215,7 +247,20 @@
                         </div>
                         <h3 class="service-title">Publishing</h3>
                         <p class="service-description">End-to-end publishing support from manuscript to market-ready book.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="publishing">Learn More</button>
+                        <div class="service-details" id="publishing-details">
+                            <p><strong>Full Publishing Package:</strong></p>
+                            <ul>
+                                <li>Professional cover design</li>
+                                <li>Interior formatting for print and ebook</li>
+                                <li>ISBN assignment and registration</li>
+                                <li>Amazon KDP and IngramSpark setup</li>
+                                <li>Distribution to major online retailers</li>
+                                <li>Copyright registration assistance</li>
+                            </ul>
+                            <p><strong>Timeline:</strong> 4-8 weeks from final manuscript to published book.</p>
+                            <a href="#contact" class="service-contact-btn">Get Started</a>
+                        </div>
                     </article>
                     
                     <article class="service-card">
@@ -224,16 +269,45 @@
                         </div>
                         <h3 class="service-title">Marketing</h3>
                         <p class="service-description">Strategic marketing campaigns to help your book reach its intended audience.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="marketing">Learn More</button>
+                        <div class="service-details" id="marketing-details">
+                            <p><strong>Marketing Services:</strong></p>
+                            <ul>
+                                <li>Social media campaign strategy and management</li>
+                                <li>Amazon ads and promotional campaigns</li>
+                                <li>Email marketing and newsletter setup</li>
+                                <li>Book launch planning and execution</li>
+                                <li>Goodreads author profile optimization</li>
+                                <li>Press release writing and distribution</li>
+                            </ul>
+                            <p><strong>Packages:</strong> Available as one-time launch campaigns or ongoing monthly management.</p>
+                            <a href="#contact" class="service-contact-btn">Discuss Your Campaign</a>
+                        </div>
                     </article>
                     
-                    <article class="service-card">
+                    <article class="service-card arc-card">
+                        <div class="service-image">
+                            <img src="./src/images/Book_club.jpg" alt="Book club members reviewing advance copies" loading="lazy">
+                        </div>
                         <div class="service-icon">
                             <span class="service-emoji">⭐</span>
                         </div>
                         <h3 class="service-title">ARC Review Team</h3>
                         <p class="service-description">Professional advance review copies program to generate early buzz and feedback.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="arc-review">Learn More</button>
+                        <div class="service-details" id="arc-review-details">
+                            <p><strong>Our ARC Program Includes:</strong></p>
+                            <ul>
+                                <li>Access to 200+ active book reviewers across genres</li>
+                                <li>Targeted reviewer matching based on your book's genre</li>
+                                <li>Digital and/or print ARC distribution</li>
+                                <li>Review tracking and collection</li>
+                                <li>Amazon, Goodreads, and BookBub review posting</li>
+                                <li>Minimum 15-25 reviews guaranteed</li>
+                            </ul>
+                            <p><strong>Timeline:</strong> Launch 4-6 weeks before publication date for maximum impact.</p>
+                            <a href="#contact" class="service-contact-btn">Join Our ARC Program</a>
+                        </div>
                     </article>
                     
                     <article class="service-card">
@@ -242,7 +316,21 @@
                         </div>
                         <h3 class="service-title">Landing Page Development</h3>
                         <p class="service-description">Custom-designed landing pages to showcase your books and author brand with professional web presence.</p>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <button class="service-expand-btn" data-service="landing-page">Learn More</button>
+                        <div class="service-details" id="landing-page-details">
+                            <p><strong>Landing Page Features:</strong></p>
+                            <ul>
+                                <li>Custom design tailored to your brand and books</li>
+                                <li>Responsive mobile-friendly layout</li>
+                                <li>Book showcase gallery with purchase links</li>
+                                <li>Contact form and newsletter integration</li>
+                                <li>Social media integration</li>
+                                <li>Fast loading, SEO-optimized</li>
+                                <li>Hosted on Netlify with free SSL</li>
+                            </ul>
+                            <p><strong>Delivery:</strong> 2-3 weeks from design approval to live site.</p>
+                            <a href="#contact" class="service-contact-btn">Request a Demo</a>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -364,7 +452,7 @@
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <ul class="footer-social">
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61571109431155" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                         <li><a href="#" target="_blank" rel="noopener noreferrer">Amazon</a></li>
                         <li><a href="#" target="_blank" rel="noopener noreferrer">Goodreads</a></li>
                     </ul>
@@ -387,7 +475,18 @@
         </div>
     </footer>
 
+    <!-- Book Details Modal -->
+    <div id="book-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Book details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/modals-and-expansions.js"></script>
 </body>
 </html>
