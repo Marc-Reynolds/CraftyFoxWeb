@@ -53,4 +53,292 @@
                 navMenu.classList.remove('nav-menu--open');
                 document.body.classList.remove('menu-open');
             }
-        });\n        \n        // Close menu on escape key\n        document.addEventListener('keydown', function(e) {\n            if (e.key === 'Escape') {\n                mobileToggle.setAttribute('aria-expanded', 'false');\n                navMenu.classList.remove('nav-menu--open');\n                document.body.classList.remove('menu-open');\n                mobileToggle.focus();\n            }\n        });\n    }\n    \n    // Smooth Scrolling for Navigation Links\n    function initSmoothScrolling() {\n        const navLinks = document.querySelectorAll('a[href^=\"#\"]');\n        \n        navLinks.forEach(function(link) {\n            link.addEventListener('click', function(e) {\n                const targetId = this.getAttribute('href');\n                const targetSection = document.querySelector(targetId);\n                \n                if (targetSection) {\n                    e.preventDefault();\n                    \n                    // Close mobile menu if open\n                    const mobileToggle = document.querySelector('.mobile-menu-toggle');\n                    const navMenu = document.querySelector('.nav-menu');\n                    if (mobileToggle && navMenu) {\n                        mobileToggle.setAttribute('aria-expanded', 'false');\n                        navMenu.classList.remove('nav-menu--open');\n                        document.body.classList.remove('menu-open');\n                    }\n                    \n                    // Smooth scroll to target\n                    targetSection.scrollIntoView({\n                        behavior: 'smooth',\n                        block: 'start'\n                    });\n                    \n                    // Update URL without triggering scroll\n                    if (history.pushState) {\n                        history.pushState(null, null, targetId);\n                    }\n                    \n                    // Focus management for accessibility\n                    setTimeout(function() {\n                        targetSection.focus({ preventScroll: true });\n                    }, 500);\n                }\n            });\n        });\n    }\n    \n    // Form Handling\n    function initFormHandling() {\n        initContactForm();\n        initNewsletterForm();\n    }\n    \n    function initContactForm() {\n        const contactForm = document.querySelector('.contact-form');\n        if (!contactForm) return;\n        \n        contactForm.addEventListener('submit', function(e) {\n            e.preventDefault();\n            \n            // Basic client-side validation\n            if (validateContactForm(this)) {\n                submitContactForm(this);\n            }\n        });\n        \n        // Real-time validation\n        const inputs = contactForm.querySelectorAll('input, textarea, select');\n        inputs.forEach(function(input) {\n            input.addEventListener('blur', function() {\n                validateField(this);\n            });\n        });\n    }\n    \n    function validateContactForm(form) {\n        let isValid = true;\n        const requiredFields = form.querySelectorAll('[required]');\n        \n        requiredFields.forEach(function(field) {\n            if (!validateField(field)) {\n                isValid = false;\n            }\n        });\n        \n        return isValid;\n    }\n    \n    function validateField(field) {\n        const errorElement = document.getElementById(field.getAttribute('aria-describedby'));\n        let isValid = true;\n        let errorMessage = '';\n        \n        // Required field validation\n        if (field.hasAttribute('required') && !field.value.trim()) {\n            isValid = false;\n            errorMessage = 'This field is required.';\n        }\n        \n        // Email validation\n        if (field.type === 'email' && field.value) {\n            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n            if (!emailRegex.test(field.value)) {\n                isValid = false;\n                errorMessage = 'Please enter a valid email address.';\n            }\n        }\n        \n        // Update UI\n        if (errorElement) {\n            errorElement.textContent = errorMessage;\n        }\n        \n        field.classList.toggle('form-input--error', !isValid);\n        field.setAttribute('aria-invalid', !isValid);\n        \n        return isValid;\n    }\n    \n    function submitContactForm(form) {\n        const submitButton = form.querySelector('.form-submit');\n        const statusElement = form.querySelector('.form-status');\n        const originalButtonText = submitButton.textContent;\n        \n        // Update UI to show loading state\n        submitButton.textContent = 'Sending...';\n        submitButton.disabled = true;\n        \n        // Submit form using Formspree\n        const formData = new FormData(form);\n        \n        fetch(form.action, {\n            method: 'POST',\n            body: formData,\n            headers: {\n                'Accept': 'application/json'\n            }\n        })\n        .then(function(response) {\n            if (response.ok) {\n                statusElement.innerHTML = '<div class=\"form-success\">Thank you! Your message has been sent successfully.</div>';\n                form.reset();\n            } else {\n                throw new Error('Network response was not ok');\n            }\n        })\n        .catch(function(error) {\n            console.error('Form submission error:', error);\n            statusElement.innerHTML = '<div class=\"form-error\">Sorry, there was an error sending your message. Please try again.</div>';\n        })\n        .finally(function() {\n            // Reset button state\n            submitButton.textContent = originalButtonText;\n            submitButton.disabled = false;\n        });\n    }\n    \n    function initNewsletterForm() {\n        const newsletterForm = document.querySelector('.newsletter-form');\n        if (!newsletterForm) return;\n        \n        newsletterForm.addEventListener('submit', function(e) {\n            e.preventDefault();\n            \n            const emailInput = this.querySelector('#newsletter-email');\n            if (validateField(emailInput)) {\n                submitNewsletterForm(this);\n            }\n        });\n    }\n    \n    function submitNewsletterForm(form) {\n        const submitButton = form.querySelector('.newsletter-submit');\n        const statusElement = form.querySelector('.newsletter-status');\n        const originalButtonText = submitButton.textContent;\n        \n        // Update UI to show loading state\n        submitButton.textContent = 'Subscribing...';\n        submitButton.disabled = true;\n        \n        // Submit form using Formspree\n        const formData = new FormData(form);\n        \n        fetch(form.action, {\n            method: 'POST',\n            body: formData,\n            headers: {\n                'Accept': 'application/json'\n            }\n        })\n        .then(function(response) {\n            if (response.ok) {\n                statusElement.innerHTML = '<div class=\"newsletter-success\">Thank you for subscribing!</div>';\n                form.reset();\n            } else {\n                throw new Error('Network response was not ok');\n            }\n        })\n        .catch(function(error) {\n            console.error('Newsletter subscription error:', error);\n            statusElement.innerHTML = '<div class=\"newsletter-error\">Sorry, there was an error. Please try again.</div>';\n        })\n        .finally(function() {\n            // Reset button state\n            submitButton.textContent = originalButtonText;\n            submitButton.disabled = false;\n        });\n    }\n    \n    // Accessibility Enhancements\n    function initAccessibility() {\n        // Add focus-visible polyfill behavior for older browsers\n        addFocusVisibleSupport();\n        \n        // Add skip links functionality\n        initSkipLinks();\n        \n        // Announce dynamic content changes to screen readers\n        initAriaLiveRegions();\n    }\n    \n    function addFocusVisibleSupport() {\n        // Add focus-visible class for keyboard navigation\n        let hadKeyboardEvent = true;\n        \n        const keyboardThrottleTimeout = 100;\n        let timeoutId;\n        \n        function markKeyboardEvent() {\n            hadKeyboardEvent = true;\n        }\n        \n        function markPointerEvent() {\n            hadKeyboardEvent = false;\n        }\n        \n        function onFocus(e) {\n            if (hadKeyboardEvent || e.target.matches(':focus-visible')) {\n                e.target.classList.add('focus-visible');\n            }\n        }\n        \n        function onBlur(e) {\n            e.target.classList.remove('focus-visible');\n        }\n        \n        document.addEventListener('keydown', markKeyboardEvent);\n        document.addEventListener('mousedown', markPointerEvent);\n        document.addEventListener('focus', onFocus, true);\n        document.addEventListener('blur', onBlur, true);\n    }\n    \n    function initSkipLinks() {\n        const skipLinks = document.querySelectorAll('.skip-link');\n        \n        skipLinks.forEach(function(link) {\n            link.addEventListener('click', function(e) {\n                const targetId = this.getAttribute('href');\n                const target = document.querySelector(targetId);\n                \n                if (target) {\n                    e.preventDefault();\n                    target.focus();\n                    target.scrollIntoView({ behavior: 'smooth' });\n                }\n            });\n        });\n    }\n    \n    function initAriaLiveRegions() {\n        // Ensure status messages are announced to screen readers\n        const statusElements = document.querySelectorAll('[role=\"status\"], [aria-live]');\n        \n        statusElements.forEach(function(element) {\n            // Ensure proper ARIA attributes\n            if (!element.getAttribute('aria-live')) {\n                element.setAttribute('aria-live', 'polite');\n            }\n        });\n    }\n    \n})();
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                navMenu.classList.remove('nav-menu--open');
+                document.body.classList.remove('menu-open');
+                mobileToggle.focus();
+            }
+        });
+    }
+    
+    // Smooth Scrolling for Navigation Links
+    function initSmoothScrolling() {
+        const navLinks = document.querySelectorAll('a[href^=\"#\"]');
+        
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                    const navMenu = document.querySelector('.nav-menu');
+                    if (mobileToggle && navMenu) {
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                        navMenu.classList.remove('nav-menu--open');
+                        document.body.classList.remove('menu-open');
+                    }
+                    
+                    // Smooth scroll to target
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update URL without triggering scroll
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    }
+                    
+                    // Focus management for accessibility
+                    setTimeout(function() {
+                        targetSection.focus({ preventScroll: true });
+                    }, 500);
+                }
+            });
+        });
+    }
+    
+    // Form Handling
+    function initFormHandling() {
+        initContactForm();
+        initNewsletterForm();
+    }
+    
+    function initContactForm() {
+        const contactForm = document.querySelector('.contact-form');
+        if (!contactForm) return;
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic client-side validation
+            if (validateContactForm(this)) {
+                submitContactForm(this);
+            }
+        });
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        inputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+        });
+    }
+    
+    function validateContactForm(form) {
+        let isValid = true;
+        const requiredFields = form.querySelectorAll('[required]');
+        
+        requiredFields.forEach(function(field) {
+            if (!validateField(field)) {
+                isValid = false;
+            }
+        });
+        
+        return isValid;
+    }
+    
+    function validateField(field) {
+        const errorElement = document.getElementById(field.getAttribute('aria-describedby'));
+        let isValid = true;
+        let errorMessage = '';
+        
+        // Required field validation
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            isValid = false;
+            errorMessage = 'This field is required.';
+        }
+        
+        // Email validation
+        if (field.type === 'email' && field.value) {
+            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address.';
+            }
+        }
+        
+        // Update UI
+        if (errorElement) {
+            errorElement.textContent = errorMessage;
+        }
+        
+        field.classList.toggle('form-input--error', !isValid);
+        field.setAttribute('aria-invalid', !isValid);
+        
+        return isValid;
+    }
+    
+    function submitContactForm(form) {
+        const submitButton = form.querySelector('.form-submit');
+        const statusElement = form.querySelector('.form-status');
+        const originalButtonText = submitButton.textContent;
+        
+        // Update UI to show loading state
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        // Submit form using Formspree
+        const formData = new FormData(form);
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                statusElement.innerHTML = '<div class=\"form-success\">Thank you! Your message has been sent successfully.</div>';
+                form.reset();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .catch(function(error) {
+            console.error('Form submission error:', error);
+            statusElement.innerHTML = '<div class=\"form-error\">Sorry, there was an error sending your message. Please try again.</div>';
+        })
+        .finally(function() {
+            // Reset button state
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+        });
+    }
+    
+    function initNewsletterForm() {
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (!newsletterForm) return;
+        
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('#newsletter-email');
+            if (validateField(emailInput)) {
+                submitNewsletterForm(this);
+            }
+        });
+    }
+    
+    function submitNewsletterForm(form) {
+        const submitButton = form.querySelector('.newsletter-submit');
+        const statusElement = form.querySelector('.newsletter-status');
+        const originalButtonText = submitButton.textContent;
+        
+        // Update UI to show loading state
+        submitButton.textContent = 'Subscribing...';
+        submitButton.disabled = true;
+        
+        // Submit form using Formspree
+        const formData = new FormData(form);
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                statusElement.innerHTML = '<div class=\"newsletter-success\">Thank you for subscribing!</div>';
+                form.reset();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .catch(function(error) {
+            console.error('Newsletter subscription error:', error);
+            statusElement.innerHTML = '<div class=\"newsletter-error\">Sorry, there was an error. Please try again.</div>';
+        })
+        .finally(function() {
+            // Reset button state
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+        });
+    }
+    
+    // Accessibility Enhancements
+    function initAccessibility() {
+        // Add focus-visible polyfill behavior for older browsers
+        addFocusVisibleSupport();
+        
+        // Add skip links functionality
+        initSkipLinks();
+        
+        // Announce dynamic content changes to screen readers
+        initAriaLiveRegions();
+    }
+    
+    function addFocusVisibleSupport() {
+        // Add focus-visible class for keyboard navigation
+        let hadKeyboardEvent = true;
+        
+        const keyboardThrottleTimeout = 100;
+        let timeoutId;
+        
+        function markKeyboardEvent() {
+            hadKeyboardEvent = true;
+        }
+        
+        function markPointerEvent() {
+            hadKeyboardEvent = false;
+        }
+        
+        function onFocus(e) {
+            if (hadKeyboardEvent || e.target.matches(':focus-visible')) {
+                e.target.classList.add('focus-visible');
+            }
+        }
+        
+        function onBlur(e) {
+            e.target.classList.remove('focus-visible');
+        }
+        
+        document.addEventListener('keydown', markKeyboardEvent);
+        document.addEventListener('mousedown', markPointerEvent);
+        document.addEventListener('focus', onFocus, true);
+        document.addEventListener('blur', onBlur, true);
+    }
+    
+    function initSkipLinks() {
+        const skipLinks = document.querySelectorAll('.skip-link');
+        
+        skipLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    e.preventDefault();
+                    target.focus();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+    
+    function initAriaLiveRegions() {
+        // Ensure status messages are announced to screen readers
+        const statusElements = document.querySelectorAll('[role=\"status\"], [aria-live]');
+        
+        statusElements.forEach(function(element) {
+            // Ensure proper ARIA attributes
+            if (!element.getAttribute('aria-live')) {
+                element.setAttribute('aria-live', 'polite');
+            }
+        });
+    }
+    
+})();
