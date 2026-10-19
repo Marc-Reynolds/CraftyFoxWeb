@@ -7,7 +7,7 @@
     "dev": "npx live-server --port=8080",
     "build": "echo Static site - no build required",
     "lint": "npx htmlhint index.html",
-    "test": "echo Tests will be added later"
+    "test": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,9 @@
   },
   "homepage": "https://github.com/Marc-Reynolds/CraftyFoxWeb#readme",
   "devDependencies": {
-    "live-server": "^1.2.2",
+    "@playwright/test": "1.56.1",
     "htmlhint": "^1.1.4",
+    "live-server": "^1.2.2",
     "stylelint": "^15.10.0",
     "stylelint-config-standard": "^34.0.0"
   }

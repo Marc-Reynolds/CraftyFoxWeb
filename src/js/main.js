@@ -55,7 +55,7 @@
         
         // Close menu on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
+            if (e.key === 'Escape' && mobileToggle.getAttribute('aria-expanded') === 'true') {
                 mobileToggle.setAttribute('aria-expanded', 'false');
                 navMenu.classList.remove('nav-menu--open');
                 document.body.classList.remove('menu-open');
@@ -64,209 +64,150 @@
         });
     }
     
-    // Smooth Scrolling for Navigation Links
+    // Delegation includes Contact links inserted into service popups.
     function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('a[href^=\"#\"]');
-        
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    e.preventDefault();
-                    
-                    // Close mobile menu if open
-                    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-                    const navMenu = document.querySelector('.nav-menu');
-                    if (mobileToggle && navMenu) {
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                        navMenu.classList.remove('nav-menu--open');
-                        document.body.classList.remove('menu-open');
-                    }
-                    
-                    // Smooth scroll to target
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Update URL without triggering scroll
-                    if (history.pushState) {
-                        history.pushState(null, null, targetId);
-                    }
-                    
-                    // Focus management for accessibility
-                    setTimeout(function() {
-                        targetSection.focus({ preventScroll: true });
-                    }, 500);
-                }
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a[href^="#"]');
+            if (!link || e.defaultPrevented || e.button !== 0 ||
+                e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+
+            const targetId = link.getAttribute('href');
+            const targetSection = document.getElementById(targetId.slice(1));
+            if (!targetSection) return;
+
+            e.preventDefault();
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                navMenu.classList.remove('nav-menu--open');
+                document.body.classList.remove('menu-open');
+            }
+
+            const focusTarget = targetSection.querySelector('h1, h2') || targetSection;
+            focusTarget.setAttribute('tabindex', '-1');
+            focusTarget.focus({ preventScroll: true });
+            targetSection.scrollIntoView({
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                block: 'start'
             });
+            history.pushState(null, '', targetId);
         });
     }
-    
-    // Form Handling
+
+    // Forms stay unavailable until a real Formspree action is configured in HTML.
     function initFormHandling() {
-        initContactForm();
-        initNewsletterForm();
-    }
-    
-    function initContactForm() {
-        const contactForm = document.querySelector('.contact-form');
-        if (!contactForm) return;
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic client-side validation
-            if (validateContactForm(this)) {
-                submitContactForm(this);
-            }
+        initForm('.contact-form', '.form-submit', '.form-status', {
+            unavailable: 'The enquiry form is currently unavailable. No message can be sent. Please connect with us on Facebook.',
+            pending: 'Sending...',
+            success: 'Thank you! Your message has been sent successfully.',
+            error: 'Sorry, your message could not be sent. Please try again.'
         });
-        
-        // Real-time validation
-        const inputs = contactForm.querySelectorAll('input, textarea, select');
-        inputs.forEach(function(input) {
-            input.addEventListener('blur', function() {
-                validateField(this);
+        initForm('.newsletter-form', '.newsletter-submit', '.newsletter-status', {
+            unavailable: 'Newsletter signup is currently unavailable. No subscription can be made.',
+            pending: 'Subscribing...',
+            success: 'Thank you for subscribing!',
+            error: 'Sorry, your subscription could not be completed. Please try again.'
+        });
+    }
+
+    function hasFormDestination(form) {
+        const action = form.getAttribute('action');
+        if (!action) return false;
+        try {
+            const url = new URL(action);
+            return url.origin === 'https://formspree.io' &&
+                /^\/f\/[a-z0-9]+$/i.test(url.pathname) && !url.search && !url.hash &&
+                !url.username && !url.password;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function initForm(selector, buttonSelector, statusSelector, messages) {
+        const form = document.querySelector(selector);
+        if (!form) return;
+        const button = form.querySelector(buttonSelector);
+        const status = form.querySelector(statusSelector);
+        const originalButtonText = button.textContent;
+        let submitting = false;
+
+        button.disabled = !hasFormDestination(form);
+        status.textContent = button.disabled ? messages.unavailable : '';
+
+        form.querySelectorAll('input, textarea, select').forEach(function(field) {
+            field.addEventListener('blur', function() {
+                validateField(field);
             });
         });
-    }
-    
-    function validateContactForm(form) {
-        let isValid = true;
-        const requiredFields = form.querySelectorAll('[required]');
-        
-        requiredFields.forEach(function(field) {
-            if (!validateField(field)) {
-                isValid = false;
-            }
-        });
-        
-        return isValid;
-    }
-    
-    function validateField(field) {
-        const errorElement = document.getElementById(field.getAttribute('aria-describedby'));
-        let isValid = true;
-        let errorMessage = '';
-        
-        // Required field validation
-        if (field.hasAttribute('required') && !field.value.trim()) {
-            isValid = false;
-            errorMessage = 'This field is required.';
-        }
-        
-        // Email validation
-        if (field.type === 'email' && field.value) {
-            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-                isValid = false;
-                errorMessage = 'Please enter a valid email address.';
-            }
-        }
-        
-        // Update UI
-        if (errorElement) {
-            errorElement.textContent = errorMessage;
-        }
-        
-        field.classList.toggle('form-input--error', !isValid);
-        field.setAttribute('aria-invalid', !isValid);
-        
-        return isValid;
-    }
-    
-    function submitContactForm(form) {
-        const submitButton = form.querySelector('.form-submit');
-        const statusElement = form.querySelector('.form-status');
-        const originalButtonText = submitButton.textContent;
-        
-        // Update UI to show loading state
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        
-        // Submit form using Formspree
-        const formData = new FormData(form);
-        
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(function(response) {
-            if (response.ok) {
-                statusElement.innerHTML = '<div class=\"form-success\">Thank you! Your message has been sent successfully.</div>';
-                form.reset();
-            } else {
-                throw new Error('Network response was not ok');
-            }
-        })
-        .catch(function(error) {
-            console.error('Form submission error:', error);
-            statusElement.innerHTML = '<div class=\"form-error\">Sorry, there was an error sending your message. Please try again.</div>';
-        })
-        .finally(function() {
-            // Reset button state
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
-        });
-    }
-    
-    function initNewsletterForm() {
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (!newsletterForm) return;
-        
-        newsletterForm.addEventListener('submit', function(e) {
+
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const emailInput = this.querySelector('#newsletter-email');
-            if (validateField(emailInput)) {
-                submitNewsletterForm(this);
+            if (!hasFormDestination(form)) {
+                button.disabled = true;
+                status.textContent = messages.unavailable;
+                return;
             }
-        });
-    }
-    
-    function submitNewsletterForm(form) {
-        const submitButton = form.querySelector('.newsletter-submit');
-        const statusElement = form.querySelector('.newsletter-status');
-        const originalButtonText = submitButton.textContent;
-        
-        // Update UI to show loading state
-        submitButton.textContent = 'Subscribing...';
-        submitButton.disabled = true;
-        
-        // Submit form using Formspree
-        const formData = new FormData(form);
-        
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+            if (submitting) return;
+
+            let firstInvalidField;
+            form.querySelectorAll('input, textarea, select').forEach(function(field) {
+                if (!validateField(field) && !firstInvalidField) firstInvalidField = field;
+            });
+            if (firstInvalidField) {
+                status.textContent = '';
+                firstInvalidField.focus();
+                return;
             }
-        })
-        .then(function(response) {
-            if (response.ok) {
-                statusElement.innerHTML = '<div class=\"newsletter-success\">Thank you for subscribing!</div>';
+
+            submitting = true;
+            button.disabled = true;
+            button.textContent = messages.pending;
+            form.setAttribute('aria-busy', 'true');
+            status.textContent = '';
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!response.ok) throw new Error('Form submission was not accepted');
+                status.textContent = messages.success;
                 form.reset();
-            } else {
-                throw new Error('Network response was not ok');
+            } catch (error) {
+                status.textContent = messages.error;
+            } finally {
+                submitting = false;
+                button.textContent = originalButtonText;
+                button.disabled = !hasFormDestination(form);
+                form.removeAttribute('aria-busy');
             }
-        })
-        .catch(function(error) {
-            console.error('Newsletter subscription error:', error);
-            statusElement.innerHTML = '<div class=\"newsletter-error\">Sorry, there was an error. Please try again.</div>';
-        })
-        .finally(function() {
-            // Reset button state
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
         });
     }
-    
+
+    function validateField(field) {
+        const descriptionIds = (field.getAttribute('aria-describedby') || '').split(/\s+/);
+        const errorElement = descriptionIds.map(function(id) {
+            return document.getElementById(id);
+        }).find(function(element) {
+            return element && element.classList.contains('form-error');
+        });
+        let errorMessage = '';
+
+        if (field.type === 'email') field.value = field.value.trim();
+        if (field.required && !field.value.trim()) {
+            errorMessage = 'This field is required.';
+        } else if (field.type === 'email' && field.validity.typeMismatch) {
+            // Use the browser's email syntax rules, including plus addressing.
+            errorMessage = 'Please enter a valid email address.';
+        }
+
+        if (errorElement) errorElement.textContent = errorMessage;
+        field.classList.toggle('form-input--error', Boolean(errorMessage));
+        field.setAttribute('aria-invalid', String(Boolean(errorMessage)));
+        return !errorMessage;
+    }
+
     // Accessibility Enhancements
     function initAccessibility() {
         // Add focus-visible polyfill behavior for older browsers

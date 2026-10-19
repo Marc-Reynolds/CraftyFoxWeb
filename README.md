@@ -99,6 +99,9 @@ See `specs/001-build-a-landing/tasks.md` for detailed task breakdown.
 
 ## 📖 Development Workflow
 
+For enquiry/navigation regression tests and outstanding form, link and legal
+configuration, see [the focused review](docs/ENQUIRY_NAVIGATION_REVIEW.md).
+
 1. **Planning**: All features start with specification in `specs/` directory
 2. **Implementation**: Follow task-driven development from `tasks.md`
 3. **Testing**: Cross-browser testing and accessibility validation

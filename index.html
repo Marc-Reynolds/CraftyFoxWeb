@@ -117,10 +117,6 @@
                             <h3 class="book-title">How to have a Lucid Dream: A Practical Guide to Awakening Within Your Dreams</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Explore the fascinating world of lucid dreaming and learn techniques to control your dreams.</p>
-                            <div class="book-links">
-                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View How to have a Lucid Dream on Amazon">Amazon</a>
-                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View How to have a Lucid Dream on Goodreads">Goodreads</a>
-                            </div>
                             <button class="book-details-btn" data-book="lucid-dream">View Full Details</button>
                         </div>
                     </article>
@@ -133,10 +129,6 @@
                             <h3 class="book-title">The Lost Keys: Unlocking the Art of Problem-Solving</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">How to Approach Problems, Break Them Down, and Find Solutions.</p>
-                            <div class="book-links">
-                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View The Lost Keys on Amazon">Amazon</a>
-                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View The Lost Keys on Goodreads">Goodreads</a>
-                            </div>
                             <button class="book-details-btn" data-book="lost-keys">View Full Details</button>
                         </div>
                     </article>
@@ -149,10 +141,6 @@
                             <h3 class="book-title">How to Work Smarter, Not Harder: Work-Life Balance Without Losing Momentum</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Practical strategies and productivity techniques to maximize efficiency and achieve more in less time.</p>
-                            <div class="book-links">
-                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View How To Work Smarter on Amazon">Amazon</a>
-                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View How To Work Smarter on Goodreads">Goodreads</a>
-                            </div>
                             <button class="book-details-btn" data-book="work-smarter">View Full Details</button>
                         </div>
                     </article>
@@ -165,10 +153,6 @@
                             <h3 class="book-title">Reboot Your Career for the AI Generation</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Navigate the future of work with AI. Essential strategies for thriving in an AI-powered professional landscape.</p>
-                            <div class="book-links">
-                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View Reboot Your Career on Amazon">Amazon</a>
-                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View Reboot Your Career on Goodreads">Goodreads</a>
-                            </div>
                             <button class="book-details-btn" data-book="reboot-career">View Full Details</button>
                         </div>
                     </article>
@@ -181,10 +165,6 @@
                             <h3 class="book-title">Dream Journal</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Record and reflect on your dreams with guided prompts and techniques for deeper self-discovery.</p>
-                            <div class="book-links">
-                                <a href="#" class="book-link amazon" target="_blank" rel="noopener noreferrer" aria-label="View Dream Journal on Amazon">Amazon</a>
-                                <a href="#" class="book-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="View Dream Journal on Goodreads">Goodreads</a>
-                            </div>
                             <button class="book-details-btn" data-book="dream-journal">View Full Details</button>
                         </div>
                     </article>
@@ -405,12 +385,12 @@
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+                    <h2 id="contact-heading" tabindex="-1" class="section-title">Get In Touch</h2>
                     <p class="section-description">Ready to start your publishing journey? We'd love to hear from you.</p>
                 </header>
                 
                 <div class="contact-container">
-                    <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+                    <form class="contact-form" method="POST" aria-describedby="contact-status" novalidate>
                         <div class="form-group">
                             <label for="contact-name" class="form-label">Full Name *</label>
                             <input type="text" id="contact-name" name="name" class="form-input" required aria-describedby="name-error">
@@ -443,25 +423,17 @@
                             <span id="message-error" class="form-error" role="alert"></span>
                         </div>
                         
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <button type="submit" class="form-submit" disabled>Send Message</button>
                         
-                        <div class="form-status" role="status" aria-live="polite"></div>
+                        <div id="contact-status" class="form-status" role="status" aria-live="polite">The enquiry form is currently unavailable. No message can be sent. Please connect with us on Facebook.</div>
                     </form>
                     
                     <div class="contact-info">
                         <h3>Connect With Us</h3>
                         <div class="social-links">
-                            <a href="#" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                            <a href="https://www.facebook.com/profile.php?id=61571109431155" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
                                 <span class="social-emoji">🔗</span>
                                 <span>Facebook</span>
-                            </a>
-                            <a href="#" class="social-link amazon" target="_blank" rel="noopener noreferrer" aria-label="Find us on Amazon">
-                                <span class="social-emoji">📭</span>
-                                <span>Amazon</span>
-                            </a>
-                            <a href="#" class="social-link goodreads" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Goodreads">
-                                <span class="social-emoji">📖</span>
-                                <span>Goodreads</span>
                             </a>
                         </div>
                     </div>
@@ -476,16 +448,16 @@
                     <h2 id="newsletter-heading" class="section-title">Stay Updated</h2>
                     <p class="section-description">Get the latest news about our publications, author spotlights, and publishing tips delivered to your inbox.</p>
                     
-                    <form class="newsletter-form" action="https://formspree.io/f/your-newsletter-id" method="POST" novalidate>
+                    <form class="newsletter-form" method="POST" aria-describedby="newsletter-status" novalidate>
                         <div class="newsletter-input-group">
                             <label for="newsletter-email" class="visually-hidden">Email address for newsletter</label>
                             <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Enter your email address" required aria-describedby="newsletter-error">
-                            <button type="submit" class="newsletter-submit">Subscribe</button>
+                            <button type="submit" class="newsletter-submit" disabled>Subscribe</button>
                         </div>
                         <span id="newsletter-error" class="form-error" role="alert"></span>
-                        <div class="newsletter-status" role="status" aria-live="polite"></div>
+                        <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite">Newsletter signup is currently unavailable. No subscription can be made.</div>
                         <p class="newsletter-privacy">
-                            <small>We respect your privacy. Unsubscribe at any time. <a href="#privacy">Privacy Policy</a></small>
+                            <small>Privacy Policy is currently unavailable.</small>
                         </p>
                     </form>
                 </div>
@@ -519,8 +491,6 @@
                     <h4>Connect</h4>
                     <ul class="footer-social">
                         <li><a href="https://www.facebook.com/profile.php?id=61571109431155" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">Amazon</a></li>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">Goodreads</a></li>
                     </ul>
                 </div>
                 
@@ -534,14 +504,14 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Crafty Fox Publishing. All rights reserved.</p>
                 <div class="footer-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
+                    <span>Privacy Policy — unavailable</span>
+                    <span>Terms of Service — unavailable</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Book Details Modal -->
+    <!-- Shared Book and Service Details Modal -->
     <div id="book-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
             <button class="modal-close" aria-label="Close modal">&times;</button>
