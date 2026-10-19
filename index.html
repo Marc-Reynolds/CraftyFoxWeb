@@ -3,111 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Crafty Fox Publishing - Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team. Showcasing quality books from talented authors.">
-    <meta name="keywords" content="publishing, books, authors, ghost writing, editing, book marketing, ARC review, Crafty Fox Publishing">
+    <title>Book outline support with Marc Reynolds | Crafty Fox Publishing</title>
+    <meta name="description" content="Turn your book idea into a structured outline with Marc Reynolds. Explore outline development, formatting and Amazon KDP publishing support.">
     <meta name="author" content="Crafty Fox Publishing">
-    
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://craftyfox-publishing.netlify.app/">
-    <meta property="og:title" content="Crafty Fox Publishing - Professional Publishing Services">
-    <meta property="og:description" content="Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team.">
-    <meta property="og:image" content="./src/images/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://craftyfox-publishing.netlify.app/">
-    <meta property="twitter:title" content="Crafty Fox Publishing - Professional Publishing Services">
-    <meta property="twitter:description" content="Professional publishing services including ghost writing, editing, publishing, marketing and ARC review team.">
-    <meta property="twitter:image" content="./src/images/og-image.jpg">
-
-    <title>Crafty Fox Publishing - Professional Publishing Services</title>
-    
-    <!-- Stylesheets -->
+    <meta property="og:title" content="Your book idea. A clear outline. | Crafty Fox Publishing">
+    <meta property="og:description" content="Book outline development with Marc Reynolds, with formatting and KDP support when you need the next step.">
+    <meta property="og:image" content="https://craftyfox-publishing.netlify.app/src/images/faviconFox.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Your book idea. A clear outline. | Crafty Fox Publishing">
+    <meta name="twitter:description" content="Book outline development, formatting and KDP support with Marc Reynolds.">
+    <meta name="twitter:image" content="https://craftyfox-publishing.netlify.app/src/images/faviconFox.png">
+    <link rel="icon" type="image/png" href="./src/images/faviconFox.png">
+    <link rel="apple-touch-icon" href="./src/images/faviconFox.png">
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/styles.css">
     <link rel="stylesheet" href="./src/css/components.css">
-    
-    <!-- Favicon - Multiple sizes for better display -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./src/images/faviconFox.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./src/images/faviconFox.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./src/images/faviconFox.png">
-    <link rel="shortcut icon" href="./src/images/faviconFox.png">
-    
-    <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://formspree.io">
-    
-    <!-- Google Fonts - Mystical Theme -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v24.0"></script>
-    
-    <!-- Skip navigation for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Header -->
-    <header class="site-header" role="banner">
-        <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+    <header class="site-header">
+        <nav class="main-navigation" aria-label="Main navigation">
             <div class="nav-container">
-                <!-- Logo -->
-                <div class="logo">
-                    <img src="./src/images/faviconFox.png" alt="Crafty Fox Publishing" class="logo-image">
-                    <span class="logo-text">Crafty Fox Publishing</span>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <a class="logo" href="#home" aria-label="Crafty Fox Publishing home">
+                    <img src="./src/images/faviconFox.png" width="48" height="48" alt="" class="logo-image">
+                    <span class="logo-text">Crafty Fox <span>Publishing</span></span>
+                </a>
+                <button type="button" class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="main-nav" aria-expanded="false">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-                
-                <!-- Navigation menu -->
-                <ul class="nav-menu" role="menubar">
-                    <li role="none"><a href="#home" role="menuitem">Home</a></li>
-                    <li role="none"><a href="#books" role="menuitem">Books</a></li>
-                    <li role="none"><a href="#services" role="menuitem">Services</a></li>
-                    <li role="none"><a href="#portfolio" role="menuitem">Portfolio</a></li>
-                    <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
-                    <li role="none"><a href="#newsletter" role="menuitem">Newsletter</a></li>
+                <ul class="nav-menu" id="main-nav">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#about">About Marc</a></li>
+                    <li><a href="#books">Books</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a href="#contact" class="nav-contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content" role="main">
-        
-        <!-- Hero Section -->
+    <main id="main-content" tabindex="-1">
         <section id="home" class="hero-section" aria-labelledby="hero-heading">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 id="hero-heading" class="hero-title">Bringing Stories to Life</h1>
-                    <p class="hero-subtitle">Professional publishing services for authors and dreamers. From ghost writing to marketing, we help you share your story with the world.</p>
+                    <p class="eyebrow">Book planning with Marc Reynolds</p>
+                    <h1 id="hero-heading">Turn your book idea into a clear outline.</h1>
+                    <p class="hero-subtitle">Have an idea for a book, but not sure how to shape it? Work with Marc to clarify what you want to say and organise it into a structure you can write from.</p>
                     <div class="hero-actions">
-                        <a href="#services" class="cta-button primary">Explore Our Services</a>
-                        <a href="#books" class="cta-button secondary">View Published Works</a>
+                        <a href="#contact" class="cta-button primary">Discuss your book <span aria-hidden="true">&rarr;</span></a>
+                        <a href="#books" class="cta-button secondary">Explore Marc’s books</a>
                     </div>
+                    <p class="hero-note">Start with your outline. Formatting and KDP support are available for the next stage.</p>
                 </div>
-                <div class="hero-image">
-                    <img src="./src/images/faviconFox.png" alt="Crafty Fox Publishing logo" class="hero-logo" loading="lazy">
+                <figure class="hero-image">
+                    <img src="./src/images/faviconFox.png" alt="The blue and teal Crafty Fox" width="500" height="500" class="hero-logo" fetchpriority="high">
+                    <figcaption>A clearer beginning<br>for your book.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="services" class="services-section" aria-labelledby="services-heading">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="eyebrow">Find your starting point</p>
+                    <h2 id="services-heading">Support for the book you want to write.</h2>
+                    <p class="section-description">Begin with the idea. If your manuscript is further along, talk to Marc about formatting or preparing for KDP.</p>
+                </header>
+                <div class="services-grid">
+                    <article class="service-card featured-service">
+                        <p class="card-label">Start here</p>
+                        <h3>Book outline development</h3>
+                        <p>Give your idea a clear direction. Work through the purpose, reader and structure of your book, then develop an outline to guide your writing.</p>
+                        <button type="button" class="service-expand-btn" data-service="outline">Explore outline support <span aria-hidden="true">&rarr;</span></button>
+                    </article>
+                    <article class="service-card">
+                        <p class="card-label">For your manuscript</p>
+                        <h3>Formatting support</h3>
+                        <p>Help preparing the layout of an existing manuscript for print or ebook. Discuss the format you need and the work involved before getting started.</p>
+                        <button type="button" class="service-expand-btn" data-service="formatting">Explore formatting <span aria-hidden="true">&rarr;</span></button>
+                    </article>
+                    <article class="service-card">
+                        <p class="card-label">For self-publishing</p>
+                        <h3>KDP publishing support</h3>
+                        <p>Guidance with preparing your book for Amazon Kindle Direct Publishing and understanding the submission steps. You stay involved in the publishing decisions.</p>
+                        <button type="button" class="service-expand-btn" data-service="kdp">Explore KDP support <span aria-hidden="true">&rarr;</span></button>
+                    </article>
+                </div>
+                <p class="approach-note"><strong>How the work is approached:</strong> AI tools can assist the work. Marc reviews the deliverables. The scope and approach are agreed with you before work begins.</p>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="process-section section-tint" aria-labelledby="process-heading">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="eyebrow">A conversation, then a plan</p>
+                    <h2 id="process-heading">How it works</h2>
+                </header>
+                <ol class="process-grid">
+                    <li>
+                        <span class="step-number" aria-hidden="true">01</span>
+                        <h3>Share your idea</h3>
+                        <p>Tell Marc what you want to write, who it is for and where you are feeling stuck. Early notes and half-formed ideas are a starting point.</p>
+                    </li>
+                    <li>
+                        <span class="step-number" aria-hidden="true">02</span>
+                        <h3>Agree the scope</h3>
+                        <p>Talk through the help you need and agree what the work will cover before moving ahead.</p>
+                    </li>
+                    <li>
+                        <span class="step-number" aria-hidden="true">03</span>
+                        <h3>Develop the outline together</h3>
+                        <p>Work through the shape of the book with Marc, organising your ideas into an outline that supports your next step: writing.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="about" class="about-section" aria-labelledby="about-heading">
+            <div class="section-container about-container">
+                <header>
+                    <p class="eyebrow">The person behind Crafty Fox</p>
+                    <h2 id="about-heading">Meet Marc Reynolds.</h2>
+                </header>
+                <div class="about-copy">
+                    <p>Crafty Fox Publishing is Marc Reynolds’s publishing and services business. Marc is the author of the books shown below, including <cite>The Lost Keys</cite> and <cite>Reboot Your Career for the AI Generation</cite>.</p>
+                    <p>Explore his own published work to get a feel for the books behind the business.</p>
+                    <a href="#books" class="text-link">See Marc’s published work <span aria-hidden="true">&darr;</span></a>
                 </div>
             </div>
         </section>
 
-        <!-- Books Showcase Section -->
-        <section id="books" class="books-section" aria-labelledby="books-heading">
+        <section id="books" class="books-section section-tint" aria-labelledby="books-heading">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 id="books-heading" class="section-title">Featured Publications</h2>
-                    <p class="section-description">Discover the incredible works from our talented authors</p>
+                    <p class="eyebrow">The author’s bookshelf</p>
+                    <h2 id="books-heading">Books by Marc Reynolds</h2>
+                    <p class="section-description">Examples of Marc’s own published work. Open a book’s details to find out more.</p>
                 </header>
-                
                 <div class="books-grid" role="region" aria-label="Published books gallery">
                     <article class="book-card">
                         <div class="book-cover">
@@ -117,7 +154,7 @@
                             <h3 class="book-title">How to have a Lucid Dream: A Practical Guide to Awakening Within Your Dreams</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Explore the fascinating world of lucid dreaming and learn techniques to control your dreams.</p>
-                            <button class="book-details-btn" data-book="lucid-dream">View Full Details</button>
+                            <button class="book-details-btn" data-book="lucid-dream">Book details</button>
                         </div>
                     </article>
                     
@@ -129,7 +166,7 @@
                             <h3 class="book-title">The Lost Keys: Unlocking the Art of Problem-Solving</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">How to Approach Problems, Break Them Down, and Find Solutions.</p>
-                            <button class="book-details-btn" data-book="lost-keys">View Full Details</button>
+                            <button class="book-details-btn" data-book="lost-keys">Book details</button>
                         </div>
                     </article>
                     
@@ -141,7 +178,7 @@
                             <h3 class="book-title">How to Work Smarter, Not Harder: Work-Life Balance Without Losing Momentum</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Practical strategies and productivity techniques to maximize efficiency and achieve more in less time.</p>
-                            <button class="book-details-btn" data-book="work-smarter">View Full Details</button>
+                            <button class="book-details-btn" data-book="work-smarter">Book details</button>
                         </div>
                     </article>
                     
@@ -153,7 +190,7 @@
                             <h3 class="book-title">Reboot Your Career for the AI Generation</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Navigate the future of work with AI. Essential strategies for thriving in an AI-powered professional landscape.</p>
-                            <button class="book-details-btn" data-book="reboot-career">View Full Details</button>
+                            <button class="book-details-btn" data-book="reboot-career">Book details</button>
                         </div>
                     </article>
                     
@@ -165,344 +202,101 @@
                             <h3 class="book-title">Dream Journal</h3>
                             <p class="book-author">by Marc Reynolds</p>
                             <p class="book-description">Record and reflect on your dreams with guided prompts and techniques for deeper self-discovery.</p>
-                            <button class="book-details-btn" data-book="dream-journal">View Full Details</button>
+                            <button class="book-details-btn" data-book="dream-journal">Book details</button>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services-section" aria-labelledby="services-heading">
-            <div class="section-container">
-                <header class="section-header">
-                    <h2 id="services-heading" class="section-title">Our Publishing Services</h2>
-                    <p class="section-description">Comprehensive support for your publishing journey</p>
-                </header>
-                
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-icon">
-                            <span class="service-emoji">✍️</span>
-                        </div>
-                        <h3 class="service-title">Ghost Writing</h3>
-                        <p class="service-description">Professional writers bring your ideas to life with compelling, authentic storytelling.</p>
-                        <button class="service-expand-btn" data-service="ghost-writing">Learn More</button>
-                        <div class="service-details" id="ghost-writing-details">
-                            <p><strong>What's Included:</strong></p>
-                            <ul>
-                                <li>Complete manuscript development from concept to final draft</li>
-                                <li>Professional writer matched to your genre and style</li>
-                                <li>Multiple revision rounds included</li>
-                                <li>Confidentiality agreement and full rights transfer</li>
-                                <li>Average completion: 3-6 months depending on length</li>
-                            </ul>
-                            <p><strong>Perfect For:</strong> Busy professionals, thought leaders, and entrepreneurs with stories to share but limited time to write.</p>
-                            <a href="#contact" class="service-contact-btn">Get a Quote</a>
-                        </div>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon">
-                            <span class="service-emoji">✂️</span>
-                        </div>
-                        <h3 class="service-title">Editing</h3>
-                        <p class="service-description">Comprehensive editing services from developmental to copy editing and proofreading.</p>
-                        <button class="service-expand-btn" data-service="editing">Learn More</button>
-                        <div class="service-details" id="editing-details">
-                            <p><strong>Editing Levels:</strong></p>
-                            <ul>
-                                <li><strong>Developmental Editing:</strong> Big-picture structure, plot, character development</li>
-                                <li><strong>Line Editing:</strong> Style, flow, sentence structure improvements</li>
-                                <li><strong>Copy Editing:</strong> Grammar, spelling, punctuation, consistency</li>
-                                <li><strong>Proofreading:</strong> Final polish before publication</li>
-                            </ul>
-                            <p><strong>Turnaround:</strong> 2-4 weeks depending on manuscript length and editing level.</p>
-                            <a href="#contact" class="service-contact-btn">Get a Quote</a>
-                        </div>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon">
-                            <span class="service-emoji">📚</span>
-                        </div>
-                        <h3 class="service-title">Publishing</h3>
-                        <p class="service-description">End-to-end publishing support from manuscript to market-ready book.</p>
-                        <button class="service-expand-btn" data-service="publishing">Learn More</button>
-                        <div class="service-details" id="publishing-details">
-                            <p><strong>Full Publishing Package:</strong></p>
-                            <ul>
-                                <li>Professional cover design</li>
-                                <li>Interior formatting for print and ebook</li>
-                                <li>ISBN assignment and registration</li>
-                                <li>Amazon KDP and IngramSpark setup</li>
-                                <li>Distribution to major online retailers</li>
-                                <li>Copyright registration assistance</li>
-                            </ul>
-                            <p><strong>Timeline:</strong> 4-8 weeks from final manuscript to published book.</p>
-                            <a href="#contact" class="service-contact-btn">Get Started</a>
-                        </div>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon">
-                            <span class="service-emoji">📊</span>
-                        </div>
-                        <h3 class="service-title">Marketing</h3>
-                        <p class="service-description">Strategic marketing campaigns to help your book reach its intended audience.</p>
-                        <button class="service-expand-btn" data-service="marketing">Learn More</button>
-                        <div class="service-details" id="marketing-details">
-                            <p><strong>Marketing Services:</strong></p>
-                            <ul>
-                                <li>Social media campaign strategy and management</li>
-                                <li>Amazon ads and promotional campaigns</li>
-                                <li>Email marketing and newsletter setup</li>
-                                <li>Book launch planning and execution</li>
-                                <li>Goodreads author profile optimization</li>
-                                <li>Press release writing and distribution</li>
-                            </ul>
-                            <p><strong>Packages:</strong> Available as one-time launch campaigns or ongoing monthly management.</p>
-                            <a href="#contact" class="service-contact-btn">Discuss Your Campaign</a>
-                        </div>
-                    </article>
-                    
-                    <article class="service-card arc-card">
-                        <div class="service-image">
-                            <img src="./src/images/Book_club.jpg" alt="Book club members reviewing advance copies" loading="lazy">
-                        </div>
-                        <div class="service-icon">
-                            <span class="service-emoji">⭐</span>
-                        </div>
-                        <h3 class="service-title">ARC Review Team</h3>
-                        <p class="service-description">Professional advance review copies program to generate early buzz and feedback.</p>
-                        <button class="service-expand-btn" data-service="arc-review">Learn More</button>
-                        <div class="service-details" id="arc-review-details">
-                            <p><strong>Our ARC Program Includes:</strong></p>
-                            <ul>
-                                <li>Access to 200+ active book reviewers across genres</li>
-                                <li>Targeted reviewer matching based on your book's genre</li>
-                                <li>Digital and/or print ARC distribution</li>
-                                <li>Review tracking and collection</li>
-                                <li>Amazon, Goodreads, and BookBub review posting</li>
-                                <li>Minimum 15-25 reviews guaranteed</li>
-                            </ul>
-                            <p><strong>Timeline:</strong> Launch 4-6 weeks before publication date for maximum impact.</p>
-                            <a href="#contact" class="service-contact-btn">Join Our ARC Program</a>
-                        </div>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon">
-                            <span class="service-emoji">🌐</span>
-                        </div>
-                        <h3 class="service-title">Landing Page Development</h3>
-                        <p class="service-description">Custom-designed landing pages to showcase your books and author brand with professional web presence.</p>
-                        <button class="service-expand-btn" data-service="landing-page">Learn More</button>
-                        <div class="service-details" id="landing-page-details">
-                            <p><strong>Landing Page Features:</strong></p>
-                            <ul>
-                                <li>Custom design tailored to your brand and books</li>
-                                <li>Responsive mobile-friendly layout</li>
-                                <li>Book showcase gallery with purchase links</li>
-                                <li>Contact form and newsletter integration</li>
-                                <li>Social media integration</li>
-                                <li>Fast loading, SEO-optimized</li>
-                                <li>Hosted on Netlify with free SSL</li>
-                            </ul>
-                            <p><strong>Delivery:</strong> 2-3 weeks from design approval to live site.</p>
-                            <a href="#contact" class="service-contact-btn">Request a Demo</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
         <section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-heading">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 id="portfolio-heading" class="section-title">Our Portfolio</h2>
-                    <p class="section-description">Professional landing pages we've created for our clients</p>
+                    <p class="eyebrow">Alongside the books</p>
+                    <h2 id="portfolio-heading">Marc’s web projects</h2>
+                    <p class="section-description">Two of Marc’s own websites, presented here as personal portfolio projects.</p>
                 </header>
-                
                 <div class="portfolio-grid">
                     <article class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="portfolio-screenshot">
-                                <img src="./src/images/portfolio-lamanns.jpg" alt="Lamanns.com website preview" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                <div class="portfolio-placeholder" style="display: none;">
-                                    <span class="portfolio-emoji">🌐</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="https://lamanns.com" target="_blank" rel="noopener noreferrer" class="portfolio-view-btn" aria-label="Visit Lamanns.com">
-                                    <span>Visit Site</span>
-                                    <span class="portfolio-arrow">→</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3 class="portfolio-title">Lamanns.com</h3>
-                            <p class="portfolio-description">A professional landing page featuring clean design, responsive layout, and optimized user experience.</p>
-                            <div class="portfolio-features">
-                                <span class="portfolio-tag">Responsive</span>
-                                <span class="portfolio-tag">Modern Design</span>
-                                <span class="portfolio-tag">SEO Optimized</span>
-                            </div>
-                        </div>
+                        <p class="card-label">Personal web project</p>
+                        <h3>Lamanns.com</h3>
+                        <p>One of Marc’s own website projects.</p>
+                        <a href="https://lamanns.com" target="_blank" rel="noopener noreferrer" class="text-link">Visit Lamanns.com <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
                     </article>
-                    
                     <article class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="portfolio-screenshot">
-                                <img src="./src/images/portfolio-doodles.jpg" alt="Doodlesanddetails.com website preview" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                <div class="portfolio-placeholder" style="display: none;">
-                                    <span class="portfolio-emoji">🎨</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="https://doodlesanddetails.com" target="_blank" rel="noopener noreferrer" class="portfolio-view-btn" aria-label="Visit Doodlesanddetails.com">
-                                    <span>Visit Site</span>
-                                    <span class="portfolio-arrow">→</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3 class="portfolio-title">Doodlesanddetails.com</h3>
-                            <p class="portfolio-description">A creative portfolio showcasing artistic work with engaging visuals and intuitive navigation.</p>
-                            <div class="portfolio-features">
-                                <span class="portfolio-tag">Creative</span>
-                                <span class="portfolio-tag">Visual Focus</span>
-                                <span class="portfolio-tag">Fast Loading</span>
-                            </div>
-                        </div>
+                        <p class="card-label">Personal web project</p>
+                        <h3>Doodlesanddetails.com</h3>
+                        <p>Another example of Marc’s work on the web.</p>
+                        <a href="https://doodlesanddetails.com" target="_blank" rel="noopener noreferrer" class="text-link">Visit Doodlesanddetails.com <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+        <section id="contact" class="contact-section section-tint" aria-labelledby="contact-heading">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 id="contact-heading" tabindex="-1" class="section-title">Get In Touch</h2>
-                    <p class="section-description">Ready to start your publishing journey? We'd love to hear from you.</p>
+                    <p class="eyebrow">Your idea is the starting point</p>
+                    <h2 id="contact-heading" tabindex="-1">Discuss your book.</h2>
+                    <p class="section-description">Tell Marc a little about your idea and where you would like help.</p>
                 </header>
-                
                 <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Start a conversation</h3>
+                        <p>You can contact Marc through the Crafty Fox Publishing Facebook page while the online enquiry form is unavailable.</p>
+                        <a href="https://www.facebook.com/profile.php?id=61571109431155" class="social-link facebook cta-button primary" target="_blank" rel="noopener noreferrer">Contact Marc on Facebook <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+                        <p class="contact-prompt">A useful place to start: what is your book about, who is it for, and do you need an outline, formatting or KDP support?</p>
+                    </div>
                     <form class="contact-form" method="POST" aria-describedby="contact-status" novalidate>
+                        <h3>Online enquiry form</h3>
+                        <div id="contact-status" class="form-status" role="status" aria-live="polite">The enquiry form is currently unavailable. No message can be sent. Please contact Marc on Facebook instead.</div>
                         <div class="form-group">
-                            <label for="contact-name" class="form-label">Full Name *</label>
-                            <input type="text" id="contact-name" name="name" class="form-input" required aria-describedby="name-error">
+                            <label for="contact-name" class="form-label">Full name <span aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></label>
+                            <input type="text" id="contact-name" name="name" class="form-input" autocomplete="name" required aria-describedby="name-error">
                             <span id="name-error" class="form-error" role="alert"></span>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="contact-email" class="form-label">Email Address *</label>
-                            <input type="email" id="contact-email" name="email" class="form-input" required aria-describedby="email-error">
+                            <label for="contact-email" class="form-label">Email address <span aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></label>
+                            <input type="email" id="contact-email" name="email" class="form-input" autocomplete="email" required aria-describedby="email-error">
                             <span id="email-error" class="form-error" role="alert"></span>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="contact-subject" class="form-label">Subject</label>
+                            <label for="contact-subject" class="form-label">Where would you like help? <span class="optional-label">(optional)</span></label>
                             <select id="contact-subject" name="subject" class="form-select">
-                                <option value="">Select a service...</option>
-                                <option value="ghost-writing">Ghost Writing</option>
-                                <option value="editing">Editing</option>
-                                <option value="publishing">Publishing</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="arc-review">ARC Review Team</option>
-                                <option value="landing-page">Landing Page Development</option>
-                                <option value="general">General Inquiry</option>
+                                <option value="">Select a starting point</option>
+                                <option value="outline">Book outline development</option>
+                                <option value="formatting">Formatting support</option>
+                                <option value="kdp">KDP publishing support</option>
+                                <option value="general">Something else</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="contact-message" class="form-label">Message *</label>
-                            <textarea id="contact-message" name="message" class="form-textarea" rows="5" required aria-describedby="message-error" placeholder="Tell us about your project..."></textarea>
+                            <label for="contact-message" class="form-label">Your book idea <span aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></label>
+                            <textarea id="contact-message" name="message" class="form-textarea" rows="4" required aria-describedby="message-error"></textarea>
                             <span id="message-error" class="form-error" role="alert"></span>
                         </div>
-                        
-                        <button type="submit" class="form-submit" disabled>Send Message</button>
-                        
-                        <div id="contact-status" class="form-status" role="status" aria-live="polite">The enquiry form is currently unavailable. No message can be sent. Please connect with us on Facebook.</div>
-                    </form>
-                    
-                    <div class="contact-info">
-                        <h3>Connect With Us</h3>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/profile.php?id=61571109431155" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                                <span class="social-emoji">🔗</span>
-                                <span>Facebook</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section id="newsletter" class="newsletter-section" aria-labelledby="newsletter-heading">
-            <div class="section-container">
-                <div class="newsletter-content">
-                    <h2 id="newsletter-heading" class="section-title">Stay Updated</h2>
-                    <p class="section-description">Get the latest news about our publications, author spotlights, and publishing tips delivered to your inbox.</p>
-                    
-                    <form class="newsletter-form" method="POST" aria-describedby="newsletter-status" novalidate>
-                        <div class="newsletter-input-group">
-                            <label for="newsletter-email" class="visually-hidden">Email address for newsletter</label>
-                            <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Enter your email address" required aria-describedby="newsletter-error">
-                            <button type="submit" class="newsletter-submit" disabled>Subscribe</button>
-                        </div>
-                        <span id="newsletter-error" class="form-error" role="alert"></span>
-                        <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite">Newsletter signup is currently unavailable. No subscription can be made.</div>
-                        <p class="newsletter-privacy">
-                            <small>Privacy Policy is currently unavailable.</small>
-                        </p>
+                        <button type="submit" class="form-submit" disabled>Send message</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-container">
+    <footer class="site-footer">
+        <div class="section-container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Crafty Fox Publishing</h3>
-                    <p>Bringing stories to life through professional publishing services.</p>
+                <div class="footer-brand">
+                    <img src="./src/images/faviconFox.png" width="44" height="44" alt="">
+                    <div><p>Crafty Fox Publishing</p><span>Book ideas, given structure.</span></div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Ghost Writing</a></li>
-                        <li><a href="#services">Editing</a></li>
-                        <li><a href="#services">Publishing</a></li>
-                        <li><a href="#services">Marketing</a></li>
-                        <li><a href="#services">ARC Review Team</a></li>
-                        <li><a href="#services">Landing Page Development</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <ul class="footer-social">
-                        <li><a href="https://www.facebook.com/profile.php?id=61571109431155" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Ready to publish your story?</p>
-                    <a href="#contact" class="footer-cta">Get Started</a>
-                </div>
+                <nav aria-label="Footer navigation">
+                    <a href="#services">Services</a>
+                    <a href="#books">Marc’s books</a>
+                    <a href="#contact">Discuss your book</a>
+                </nav>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 Crafty Fox Publishing. All rights reserved.</p>
+                <p>&copy; 2025 Crafty Fox Publishing.</p>
                 <div class="footer-links">
                     <span>Privacy Policy — unavailable</span>
                     <span>Terms of Service — unavailable</span>
@@ -511,17 +305,12 @@
         </div>
     </footer>
 
-    <!-- Shared Book and Service Details Modal -->
     <div id="book-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <div class="modal-body" id="modal-body">
-                <!-- Book details will be dynamically inserted here -->
-            </div>
+            <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body"></div>
         </div>
     </div>
-
-    <!-- Scripts -->
     <script src="./src/js/main.js"></script>
     <script src="./src/js/modals-and-expansions.js"></script>
 </body>

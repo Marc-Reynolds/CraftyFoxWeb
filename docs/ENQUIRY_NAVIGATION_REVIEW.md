@@ -1,5 +1,8 @@
 # Enquiry and navigation fixes
 
+This records PR #7. The current page, screenshots and remaining owner decisions
+are described in [the homepage refresh review](HOMEPAGE_REFRESH.md).
+
 Review base: `f20f77dcade3a88cbad8007e593e742d3b398a58`.
 The remote has no `main` branch. Its default branch, `001-build-a-landing`,
 was fetched and inspected and still pointed to that commit. No `AGENTS.md`

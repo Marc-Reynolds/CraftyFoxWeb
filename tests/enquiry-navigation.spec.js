@@ -1,8 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 const forms = [
-    { selector: '.contact-form', email: '#contact-email', error: '#email-error', status: '.form-status', success: /message has been sent successfully/ },
-    { selector: '.newsletter-form', email: '#newsletter-email', error: '#newsletter-error', status: '.newsletter-status', success: /Thank you for subscribing/ }
+    { selector: '.contact-form', email: '#contact-email', error: '#email-error', status: '.form-status', success: /message has been sent successfully/ }
 ];
 const pageErrors = new WeakMap();
 
@@ -146,13 +145,16 @@ test('pending submission cannot report success or send twice', async ({ page }) 
     expect(requests).toBe(1);
 });
 
-test('unavailable forms and actions stay safe without JavaScript', async ({ browser, baseURL, viewport, isMobile, hasTouch }) => {
+test('unavailable enquiry form and actions stay safe without JavaScript', async ({ browser, baseURL, viewport, isMobile, hasTouch }) => {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport, isMobile, hasTouch });
     await context.route('**/*', route => new URL(route.request().url()).origin === baseURL ? route.continue() : route.abort());
     const page = await context.newPage();
     const posts = [];
     page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
     await page.goto(baseURL);
+    await expect(page.locator('.nav-menu a[href="#contact"]')).toBeVisible();
+    await page.locator('.nav-menu a[href="#contact"]').click();
+    await expect(page).toHaveURL(/#contact$/);
     for (const form of forms) {
         await fillForm(page, form);
         await page.locator(form.email).press('Enter');
@@ -185,7 +187,7 @@ test('page and every book popup omit unavailable purchase/social actions', async
 
 test('all service Contact actions close the popup, unlock scrolling and focus Contact', async ({ page }) => {
     await openPage(page);
-    for (const id of ['ghost-writing', 'editing', 'publishing', 'marketing', 'arc-review', 'landing-page']) {
+    for (const id of ['outline', 'formatting', 'kdp']) {
         const opener = page.locator(`[data-service="${id}"]`);
         await opener.focus();
         await page.keyboard.press('Enter');
@@ -211,14 +213,14 @@ test('all service Contact actions close the popup, unlock scrolling and focus Co
             return top >= document.querySelector('.site-header').getBoundingClientRect().bottom && top < innerHeight;
         })).toBe(true);
         await page.keyboard.press('Tab');
-        await expect(page.locator('#contact-name')).toBeFocused();
+        await expect(page.locator('.social-link.facebook')).toBeFocused();
     }
 });
 
 test('Escape, close button and backdrop restore the opener and previous scroll state', async ({ page }) => {
     await openPage(page);
     await page.locator('body').evaluate(body => { body.style.overflow = 'auto'; });
-    for (const openerSelector of ['[data-book="lucid-dream"]', '[data-service="editing"]']) {
+    for (const openerSelector of ['[data-book="lucid-dream"]', '[data-service="outline"]']) {
         const opener = page.locator(openerSelector);
         for (const method of ['escape', 'close', 'backdrop']) {
             await opener.click();
@@ -242,7 +244,7 @@ test('Contact navigation works with keyboard on desktop and mobile menus', async
         await page.keyboard.press('Enter');
         await expect(toggle).toHaveAttribute('aria-expanded', 'true');
     }
-    await page.getByRole('menuitem', { name: 'Contact', exact: true }).focus();
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Contact', exact: true }).focus();
     await page.keyboard.press('Enter');
     await expect(page.locator('#contact-heading')).toBeFocused();
     await expect(page).toHaveURL(/#contact$/);

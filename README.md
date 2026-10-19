@@ -1,26 +1,23 @@
 # Crafty Fox Publishing - Landing Page
 
-A modern, responsive landing page for Crafty Fox Publishing, showcasing published works and services including ghost writing, editing, publishing, marketing, and ARC review team.
+A one-page site for Marc Reynolds’s Crafty Fox Publishing business, focused on
+book outline development, with formatting and KDP support as secondary services.
 
 ## 🎯 Project Overview
 
 This website serves as the digital presence for Crafty Fox Publishing, featuring:
 
-- **Books Showcase**: Display of published works from various authors
-- **Services**: Ghost Writing, Editing, Publishing, Marketing, ARC Review Team
-- **Contact System**: Professional contact form for inquiries
-- **Newsletter**: Subscription system for updates and news
-- **Social Integration**: Links to Facebook, Amazon, and Goodreads
+- **Services**: Book outline development, formatting and KDP support
+- **How it works**: Share the idea, agree the scope, develop the outline together
+- **Published work**: Marc’s own books and personal web projects
+- **Contact**: Existing Facebook route; the online form stays unavailable until a destination is verified
 
 ## 🚀 Features
 
 - ✅ Responsive design (mobile-first approach)
-- ✅ Accessibility compliant (WCAG 2.1 AA)
-- ✅ Performance optimized (Lighthouse score > 90)
-- ✅ SEO friendly
-- ✅ Contact form with Formspree integration
-- ✅ Newsletter signup
-- ✅ Social media integration
+- Keyboard navigation, visible focus and book/service detail popups
+- Contact validation and safeguards against unconfigured submissions
+- Local desktop/mobile browser regression coverage; see the review for its limits
 
 ## 🛠️ Technology Stack
 
@@ -99,8 +96,8 @@ See `specs/001-build-a-landing/tasks.md` for detailed task breakdown.
 
 ## 📖 Development Workflow
 
-For enquiry/navigation regression tests and outstanding form, link and legal
-configuration, see [the focused review](docs/ENQUIRY_NAVIGATION_REVIEW.md).
+For screenshots, regression test results and outstanding owner configuration,
+see [the homepage refresh review](docs/HOMEPAGE_REFRESH.md).
 
 1. **Planning**: All features start with specification in `specs/` directory
 2. **Implementation**: Follow task-driven development from `tasks.md`

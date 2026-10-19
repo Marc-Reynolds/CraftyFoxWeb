@@ -88,7 +88,7 @@
             focusTarget.setAttribute('tabindex', '-1');
             focusTarget.focus({ preventScroll: true });
             targetSection.scrollIntoView({
-                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                behavior: 'auto',
                 block: 'start'
             });
             history.pushState(null, '', targetId);
@@ -98,16 +98,10 @@
     // Forms stay unavailable until a real Formspree action is configured in HTML.
     function initFormHandling() {
         initForm('.contact-form', '.form-submit', '.form-status', {
-            unavailable: 'The enquiry form is currently unavailable. No message can be sent. Please connect with us on Facebook.',
+            unavailable: 'The enquiry form is currently unavailable. No message can be sent. Please contact Marc on Facebook instead.',
             pending: 'Sending...',
             success: 'Thank you! Your message has been sent successfully.',
             error: 'Sorry, your message could not be sent. Please try again.'
-        });
-        initForm('.newsletter-form', '.newsletter-submit', '.newsletter-status', {
-            unavailable: 'Newsletter signup is currently unavailable. No subscription can be made.',
-            pending: 'Subscribing...',
-            success: 'Thank you for subscribing!',
-            error: 'Sorry, your subscription could not be completed. Please try again.'
         });
     }
 
@@ -262,7 +256,7 @@
                 if (target) {
                     e.preventDefault();
                     target.focus();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'auto' });
                 }
             });
         });
