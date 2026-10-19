@@ -191,116 +191,52 @@ function initServiceExpansion(detailsModal) {
     const expandButtons = document.querySelectorAll('.service-expand-btn');
     if (!detailsModal) return;
 
-    // Service details data extracted from HTML
+    // Services offered on this page; agree the scope before work begins.
     const serviceData = {
-        'ghost-writing': {
-            title: 'Ghost Writing',
-            icon: '✍️',
-            description: 'Professional writers bring your ideas to life with compelling, authentic storytelling.',
+        'outline': {
+            title: 'Book outline development',
+            description: 'Turn your idea into a structure you can write from, with Marc Reynolds.',
             details: {
-                'What\'s Included': [
-                    'Complete manuscript development from concept to final draft',
-                    'Professional writer matched to your genre and style',
-                    'Multiple revision rounds included',
-                    'Confidentiality agreement and full rights transfer',
-                    'Average completion: 3-6 months depending on length'
+                'A starting point for your book': [
+                    'Talk through your idea, the reader and what you want the book to do',
+                    'Organise the main themes and explore a logical structure',
+                    'Develop the outline together so you have a direction for your writing'
                 ],
-                'Perfect For': 'Busy professionals, thought leaders, and entrepreneurs with stories to share but limited time to write.'
+                'The approach': 'The scope is agreed before work begins. AI tools can assist the work, and Marc reviews the deliverables.'
             },
-            ctaText: 'Get a Quote',
+            ctaText: 'Discuss your book',
             ctaLink: '#contact'
         },
-        'editing': {
-            title: 'Editing',
-            icon: '✂️',
-            description: 'Comprehensive editing services from developmental to copy editing and proofreading.',
+        'formatting': {
+            title: 'Formatting support',
+            description: 'Help preparing the layout of an existing manuscript for print or ebook.',
             details: {
-                'Editing Levels': [
-                    '<strong>Developmental Editing:</strong> Big-picture structure, plot, character development',
-                    '<strong>Line Editing:</strong> Style, flow, sentence structure improvements',
-                    '<strong>Copy Editing:</strong> Grammar, spelling, punctuation, consistency',
-                    '<strong>Proofreading:</strong> Final polish before publication'
+                'Start with your manuscript': [
+                    'Discuss the format you want to prepare',
+                    'Agree the layout work your manuscript needs',
+                    'Review the formatted material with Marc'
                 ],
-                'Turnaround': '2-4 weeks depending on manuscript length and editing level.'
+                'Scope': 'Formatting support covers the presentation and layout of your manuscript. The scope is agreed before work begins. AI tools can assist the work, and Marc reviews the deliverables.'
             },
-            ctaText: 'Get a Quote',
+            ctaText: 'Discuss your book',
             ctaLink: '#contact'
         },
-        'publishing': {
-            title: 'Publishing',
-            icon: '📚',
-            description: 'End-to-end publishing support from manuscript to market-ready book.',
+        'kdp': {
+            title: 'KDP publishing support',
+            description: 'Support with preparing for Amazon Kindle Direct Publishing.',
             details: {
-                'Full Publishing Package': [
-                    'Professional cover design',
-                    'Interior formatting for print and ebook',
-                    'ISBN assignment and registration',
-                    'Amazon KDP and IngramSpark setup',
-                    'Distribution to major online retailers',
-                    'Copyright registration assistance'
+                'Understand the next step': [
+                    'Talk through where you are in the self-publishing process',
+                    'Identify the preparation and submission steps you need help with',
+                    'Agree which parts Marc will support and which decisions remain with you'
                 ],
-                'Timeline': '4-8 weeks from final manuscript to published book.'
+                'Expectations': 'AI tools can assist preparation, and Marc reviews the deliverables. Publication remains subject to Amazon’s requirements and review. Sales and publishing outcomes are not guaranteed.'
             },
-            ctaText: 'Get Started',
-            ctaLink: '#contact'
-        },
-        'marketing': {
-            title: 'Marketing',
-            icon: '📊',
-            description: 'Strategic marketing campaigns to help your book reach its intended audience.',
-            details: {
-                'Marketing Services': [
-                    'Social media campaign strategy and management',
-                    'Amazon ads and promotional campaigns',
-                    'Email marketing and newsletter setup',
-                    'Book launch planning and execution',
-                    'Goodreads author profile optimization',
-                    'Press release writing and distribution'
-                ],
-                'Packages': 'Available as one-time launch campaigns or ongoing monthly management.'
-            },
-            ctaText: 'Discuss Your Campaign',
-            ctaLink: '#contact'
-        },
-        'arc-review': {
-            title: 'ARC Review Team',
-            icon: '⭐',
-            description: 'Professional advance review copies program to generate early buzz and feedback.',
-            details: {
-                'Our ARC Program Includes': [
-                    'Access to 200+ active book reviewers across genres',
-                    'Targeted reviewer matching based on your book\'s genre',
-                    'Digital and/or print ARC distribution',
-                    'Review tracking and collection',
-                    'Amazon, Goodreads, and BookBub review posting',
-                    'Minimum 15-25 reviews guaranteed'
-                ],
-                'Timeline': 'Launch 4-6 weeks before publication date for maximum impact.'
-            },
-            ctaText: 'Join Our ARC Program',
-            ctaLink: '#contact'
-        },
-        'landing-page': {
-            title: 'Landing Page Development',
-            icon: '🌐',
-            description: 'Custom-designed landing pages to showcase your books and author brand with professional web presence.',
-            details: {
-                'Landing Page Features': [
-                    'Custom design tailored to your brand and books',
-                    'Responsive mobile-friendly layout',
-                    'Book showcase gallery with purchase links',
-                    'Contact form and newsletter integration',
-                    'Social media integration',
-                    'Fast loading, SEO-optimized',
-                    'Hosted on Netlify with free SSL'
-                ],
-                'Delivery': '2-3 weeks from design approval to live site.'
-            },
-            ctaText: 'Request a Demo',
+            ctaText: 'Discuss your book',
             ctaLink: '#contact'
         }
     };
-    
+
     // Open modal when service expand button clicked
     expandButtons.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -333,7 +269,6 @@ function initServiceExpansion(detailsModal) {
         }
         
         detailsModal.show(`
-            <div class="modal-service-icon">${service.icon}</div>
             <h2 id="modal-title">${service.title}</h2>
             <p class="modal-service-description">${service.description}</p>
             ${detailsHTML}
