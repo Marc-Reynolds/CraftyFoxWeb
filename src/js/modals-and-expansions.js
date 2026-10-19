@@ -1,19 +1,73 @@
-// Book Modal and Service Expansion Functionality
-// Append this code to main.js or include separately
-
-// Add these two function calls to init():
-// initBookModals();
-// initServiceExpansion();
-
-// Book Modal Functionality
-function initBookModals() {
-    const bookButtons = document.querySelectorAll('.book-details-btn');
+// Shared lifecycle for book and service details.
+function initDetailsModal() {
     const modal = document.getElementById('book-modal');
     const modalBody = document.getElementById('modal-body');
-    const closeButton = document.querySelector('.modal-close');
-    
-    if (!modal || !modalBody) return;
-    
+    const closeButton = modal && modal.querySelector('.modal-close');
+    if (!modal || !modalBody || !closeButton) return null;
+
+    let opener;
+    let previousOverflow;
+    let background;
+
+    function close(restoreFocus = true) {
+        if (!modal.classList.contains('show')) return;
+        modal.classList.remove('show');
+        document.body.style.overflow = previousOverflow;
+        background.forEach(function(item) {
+            item.element.inert = item.wasInert;
+        });
+        if (restoreFocus && opener) opener.focus({ preventScroll: true });
+    }
+
+    closeButton.addEventListener('click', function() { close(); });
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) close();
+        // Let the delegated page navigation move focus to Contact after closing.
+        const contactLink = e.target.closest('a[href="#contact"]');
+        if (contactLink && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) close(false);
+    });
+    modal.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            close();
+        } else if (e.key === 'Tab') {
+            const focusable = modal.querySelectorAll('button:not([disabled]), a[href]');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+
+    return {
+        show: function(content, trigger) {
+            opener = trigger;
+            previousOverflow = document.body.style.overflow;
+            background = Array.from(document.body.children).filter(function(element) {
+                return element !== modal && element.tagName !== 'SCRIPT';
+            }).map(function(element) {
+                return { element: element, wasInert: element.inert };
+            });
+            modalBody.innerHTML = content;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            closeButton.focus();
+            background.forEach(function(item) { item.element.inert = true; });
+        }
+    };
+}
+
+// Book Modal Functionality
+function initBookModals(detailsModal) {
+    const bookButtons = document.querySelectorAll('.book-details-btn');
+    if (!detailsModal) return;
+
     // Book details data
     const bookData = {
         'lucid-dream': {
@@ -29,8 +83,8 @@ function initBookModals() {
                 'Scientific background and research',
                 'Practical exercises and challenges'
             ],
-            amazonLink: '#',
-            goodreadsLink: '#'
+            amazonLink: null,
+            goodreadsLink: null
         },
         'lost-keys': {
             title: 'The Lost Keys: Unlocking the Art of Problem-Solving',
@@ -45,8 +99,8 @@ function initBookModals() {
                 'Real-world case studies',
                 'Decision-making strategies'
             ],
-            amazonLink: '#',
-            goodreadsLink: '#'
+            amazonLink: null,
+            goodreadsLink: null
         },
         'work-smarter': {
             title: 'How to Work Smarter, Not Harder: Work-Life Balance Without Losing Momentum',
@@ -61,8 +115,8 @@ function initBookModals() {
                 'Focus and concentration methods',
                 'Work-life integration strategies'
             ],
-            amazonLink: '#',
-            goodreadsLink: '#'
+            amazonLink: null,
+            goodreadsLink: null
         },
         'reboot-career': {
             title: 'Reboot Your Career for the AI Generation',
@@ -77,8 +131,8 @@ function initBookModals() {
                 'Future-proofing your career',
                 'Opportunities in the AI economy'
             ],
-            amazonLink: '#',
-            goodreadsLink: '#'
+            amazonLink: null,
+            goodreadsLink: null
         },
         'dream-journal': {
             title: 'Dream Journal',
@@ -93,8 +147,8 @@ function initBookModals() {
                 'Pattern tracking pages',
                 'Monthly review sections'
             ],
-            amazonLink: '#',
-            goodreadsLink: '#'
+            amazonLink: null,
+            goodreadsLink: null
         }
     };
     
@@ -105,32 +159,17 @@ function initBookModals() {
             const book = bookData[bookId];
             
             if (book) {
-                displayBookModal(book);
+                displayBookModal(book, this);
             }
         });
     });
     
-    // Close modal functionality
-    closeButton.addEventListener('click', closeModal);
-    
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
-        }
-    });
-    
-    function displayBookModal(book) {
+    function displayBookModal(book, trigger) {
         const featuresHTML = book.features.map(function(feature) {
             return '<li>' + feature + '</li>';
         }).join('');
         
-        modalBody.innerHTML = `
+        detailsModal.show(`
             <img src="${book.cover}" alt="${book.title} cover" class="modal-book-cover">
             <h2 id="modal-title">${book.title}</h2>
             <p><strong>Author:</strong> ${book.author}</p>
@@ -140,35 +179,18 @@ function initBookModals() {
                 ${featuresHTML}
             </ul>
             <div class="modal-links">
-                <a href="${book.amazonLink}" class="modal-link" target="_blank" rel="noopener noreferrer">Buy on Amazon</a>
-                <a href="${book.goodreadsLink}" class="modal-link" target="_blank" rel="noopener noreferrer">View on Goodreads</a>
+                ${book.amazonLink ? `<a href="${book.amazonLink}" class="modal-link" target="_blank" rel="noopener noreferrer">Buy on Amazon</a>` : ''}
+                ${book.goodreadsLink ? `<a href="${book.goodreadsLink}" class="modal-link" target="_blank" rel="noopener noreferrer">View on Goodreads</a>` : ''}
             </div>
-        `;
-        
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-        
-        // Focus management
-        setTimeout(function() {
-            closeButton.focus();
-        }, 100);
-    }
-    
-    function closeModal() {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
+        `, trigger);
     }
 }
 
 // Service Card Expansion as Modals
-function initServiceExpansion() {
+function initServiceExpansion(detailsModal) {
     const expandButtons = document.querySelectorAll('.service-expand-btn');
-    const modal = document.getElementById('book-modal');
-    const modalBody = document.getElementById('modal-body');
-    const closeButton = document.querySelector('.modal-close');
-    
-    if (!modal || !modalBody) return;
-    
+    if (!detailsModal) return;
+
     // Service details data extracted from HTML
     const serviceData = {
         'ghost-writing': {
@@ -286,12 +308,12 @@ function initServiceExpansion() {
             const service = serviceData[serviceId];
             
             if (service) {
-                displayServiceModal(service);
+                displayServiceModal(service, this);
             }
         });
     });
     
-    function displayServiceModal(service) {
+    function displayServiceModal(service, trigger) {
         let detailsHTML = '';
         
         // Build details sections
@@ -310,7 +332,7 @@ function initServiceExpansion() {
             }
         }
         
-        modalBody.innerHTML = `
+        detailsModal.show(`
             <div class="modal-service-icon">${service.icon}</div>
             <h2 id="modal-title">${service.title}</h2>
             <p class="modal-service-description">${service.description}</p>
@@ -318,25 +340,19 @@ function initServiceExpansion() {
             <div class="modal-links">
                 <a href="${service.ctaLink}" class="modal-link">${service.ctaText}</a>
             </div>
-        `;
-        
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-        
-        // Focus management
-        setTimeout(function() {
-            closeButton.focus();
-        }, 100);
+        `, trigger);
     }
 }
 
-// Initialize on DOM ready
+// Initialize one shared modal controller so every close path restores state.
+function initDetails() {
+    const detailsModal = initDetailsModal();
+    initBookModals(detailsModal);
+    initServiceExpansion(detailsModal);
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        initBookModals();
-        initServiceExpansion();
-    });
+    document.addEventListener('DOMContentLoaded', initDetails);
 } else {
-    initBookModals();
-    initServiceExpansion();
+    initDetails();
 }

@@ -1,5 +1,27 @@
 /* Component-Specific Styles */
 
+/* Keep the Contact heading below the sticky navigation after popup navigation. */
+#contact {
+  scroll-margin-top: 7rem;
+}
+
+.contact-form button:disabled,
+.newsletter-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Reserve feedback space so blur validation cannot move a button mid-click. */
+.form-error[role="alert"] {
+  display: block;
+  min-height: 1.5em;
+  color: #a42620;
+}
+
+.form-input--error {
+  outline: 2px solid var(--color-error);
+}
+
 /* Logo Placeholder - Mystical Fox Theme */
 .logo-placeholder {
   width: 50px;
